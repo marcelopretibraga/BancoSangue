@@ -14,13 +14,19 @@ namespace BancoSangueAPI.Controllers
     public class EstadoController : Controller
     {
         private readonly BancoSangueContext _context;
-
+        /// <summary>
+        /// Controller Reponsável por dar Manutenção na table Estado
+        /// </summary>
+        /// <param name="context"></param>
         public EstadoController(BancoSangueContext context)
         {
             _context = context;
         }
 
-        // GET: api/Estado
+        /// <summary>
+        /// Metodo que retorna todo os Estados
+        /// </summary>
+        /// <returns>Lista de Estados</returns>
         [HttpGet]
         public IEnumerable<Estado> GetEstado()
         {
