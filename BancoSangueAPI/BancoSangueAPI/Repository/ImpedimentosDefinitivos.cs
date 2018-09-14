@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BancoSangueAPI.Controllers
+namespace BancoSangueAPI.Repository
 {
     public class ImpedimentosDefinitivos
     {
