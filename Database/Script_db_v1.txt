@@ -1,0 +1,306 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 10.4
+-- Dumped by pg_dump version 10.4
+
+-- Started on 2018-09-14 18:34:08
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 2849 (class 0 OID 0)
+-- Dependencies: 2848
+-- Name: DATABASE doadordb; Type: COMMENT; Schema: -; Owner: postgres
+--
+
+COMMENT ON DATABASE doadordb IS 'Database aplicação Doador de Sangue';
+
+
+--
+-- TOC entry 1 (class 3079 OID 12924)
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- TOC entry 2851 (class 0 OID 0)
+-- Dependencies: 1
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 201 (class 1259 OID 41790)
+-- Name: compatibilidadetiposanguineo; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.compatibilidadetiposanguineo (
+    cd_compatibilidade integer NOT NULL,
+    cd_tiposanguineo character varying(2) NOT NULL,
+    cd_tipo integer NOT NULL,
+    dt_record timestamp without time zone DEFAULT now(),
+    dt_update timestamp without time zone DEFAULT now()
+);
+
+
+ALTER TABLE public.compatibilidadetiposanguineo OWNER TO postgres;
+
+--
+-- TOC entry 196 (class 1259 OID 41692)
+-- Name: doador; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.doador (
+    cd_doador integer NOT NULL,
+    nm_doador character varying(100),
+    nr_cpf character varying(20) NOT NULL,
+    nr_rg character varying(20) NOT NULL,
+    nr_telefone character varying(15),
+    dt_nascimento date NOT NULL,
+    st_doador boolean NOT NULL,
+    qt_pesodoador numeric(15,2) NOT NULL,
+    dt_record timestamp without time zone DEFAULT now(),
+    dt_update timestamp without time zone DEFAULT now(),
+    cd_endereco integer NOT NULL
+);
+
+
+ALTER TABLE public.doador OWNER TO postgres;
+
+--
+-- TOC entry 197 (class 1259 OID 41699)
+-- Name: endereco; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.endereco (
+    cd_endereco integer NOT NULL,
+    nm_logradouro character varying(100),
+    nr_numero integer NOT NULL,
+    ds_complemento character varying(250) NOT NULL,
+    ds_bairro character varying(100),
+    nr_cep integer NOT NULL,
+    dt_record timestamp without time zone DEFAULT now(),
+    dt_update timestamp without time zone DEFAULT now(),
+    cd_municipio integer NOT NULL
+);
+
+
+ALTER TABLE public.endereco OWNER TO postgres;
+
+--
+-- TOC entry 198 (class 1259 OID 41706)
+-- Name: estado; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.estado (
+    cd_estado integer NOT NULL,
+    ds_estado character varying(100),
+    sg_estado character varying(2) NOT NULL,
+    dt_record timestamp without time zone DEFAULT now(),
+    dt_update timestamp without time zone DEFAULT now()
+);
+
+
+ALTER TABLE public.estado OWNER TO postgres;
+
+--
+-- TOC entry 199 (class 1259 OID 41713)
+-- Name: municipio; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.municipio (
+    cd_municipio integer NOT NULL,
+    ds_municipio character varying(100) NOT NULL,
+    qt_domicilios integer,
+    qt_populacao integer,
+    vl_pib numeric(18,2),
+    cd_estado integer NOT NULL,
+    dt_record timestamp without time zone DEFAULT now(),
+    dt_update timestamp without time zone DEFAULT now()
+);
+
+
+ALTER TABLE public.municipio OWNER TO postgres;
+
+--
+-- TOC entry 200 (class 1259 OID 41749)
+-- Name: tiposanguineo; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.tiposanguineo (
+    cd_tiposanguineo character varying(2) NOT NULL,
+    dt_record timestamp without time zone DEFAULT now(),
+    dt_update timestamp without time zone DEFAULT now()
+);
+
+
+ALTER TABLE public.tiposanguineo OWNER TO postgres;
+
+--
+-- TOC entry 2842 (class 0 OID 41790)
+-- Dependencies: 201
+-- Data for Name: compatibilidadetiposanguineo; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2837 (class 0 OID 41692)
+-- Dependencies: 196
+-- Data for Name: doador; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2838 (class 0 OID 41699)
+-- Dependencies: 197
+-- Data for Name: endereco; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2839 (class 0 OID 41706)
+-- Dependencies: 198
+-- Data for Name: estado; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.estado (cd_estado, ds_estado, sg_estado, dt_record, dt_update) VALUES (1, 'Paraná', 'PR', '2018-08-24 22:15:15.718039', '2018-08-24 22:15:15.718039');
+INSERT INTO public.estado (cd_estado, ds_estado, sg_estado, dt_record, dt_update) VALUES (2, 'Santa Catarina', 'SC', '2018-08-24 22:16:47.43728', '2018-08-24 22:16:47.43728');
+INSERT INTO public.estado (cd_estado, ds_estado, sg_estado, dt_record, dt_update) VALUES (6, 'Teste Estado', 'xz', '2018-08-31 22:58:49.857', '2018-08-31 22:58:49.857');
+INSERT INTO public.estado (cd_estado, ds_estado, sg_estado, dt_record, dt_update) VALUES (5, 'alterado codigo 5', 'xr', '2018-08-31 23:02:38.46', '2018-08-31 23:02:38.46');
+INSERT INTO public.estado (cd_estado, ds_estado, sg_estado, dt_record, dt_update) VALUES (8, 'Parana', 'PR', '2018-09-01 01:00:46.52', '2018-09-01 01:00:46.52');
+
+
+--
+-- TOC entry 2840 (class 0 OID 41713)
+-- Dependencies: 199
+-- Data for Name: municipio; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.municipio (cd_municipio, ds_municipio, qt_domicilios, qt_populacao, vl_pib, cd_estado, dt_record, dt_update) VALUES (1, 'Toledo', 50000, 180000, 25000.00, 8, '2018-08-31 22:02:42.790581', '2018-08-31 22:02:42.790581');
+
+
+--
+-- TOC entry 2841 (class 0 OID 41749)
+-- Dependencies: 200
+-- Data for Name: tiposanguineo; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2711 (class 2606 OID 41796)
+-- Name: compatibilidadetiposanguineo pk_compatibilidadetiposanguineo; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.compatibilidadetiposanguineo
+    ADD CONSTRAINT pk_compatibilidadetiposanguineo PRIMARY KEY (cd_compatibilidade, cd_tiposanguineo, cd_tipo);
+
+
+--
+-- TOC entry 2701 (class 2606 OID 41698)
+-- Name: doador pk_doador; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.doador
+    ADD CONSTRAINT pk_doador PRIMARY KEY (cd_doador);
+
+
+--
+-- TOC entry 2703 (class 2606 OID 41705)
+-- Name: endereco pk_endereco; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.endereco
+    ADD CONSTRAINT pk_endereco PRIMARY KEY (cd_endereco);
+
+
+--
+-- TOC entry 2705 (class 2606 OID 41712)
+-- Name: estado pk_estado; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.estado
+    ADD CONSTRAINT pk_estado PRIMARY KEY (cd_estado);
+
+
+--
+-- TOC entry 2707 (class 2606 OID 41719)
+-- Name: municipio pk_municipio; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.municipio
+    ADD CONSTRAINT pk_municipio PRIMARY KEY (cd_municipio);
+
+
+--
+-- TOC entry 2709 (class 2606 OID 41755)
+-- Name: tiposanguineo pk_tiposanguineo; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tiposanguineo
+    ADD CONSTRAINT pk_tiposanguineo PRIMARY KEY (cd_tiposanguineo);
+
+
+--
+-- TOC entry 2715 (class 2606 OID 41797)
+-- Name: compatibilidadetiposanguineo compatibilidadetiposanguineo_tiposanguineo_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.compatibilidadetiposanguineo
+    ADD CONSTRAINT compatibilidadetiposanguineo_tiposanguineo_fk FOREIGN KEY (cd_tiposanguineo) REFERENCES public.tiposanguineo(cd_tiposanguineo) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- TOC entry 2712 (class 2606 OID 41730)
+-- Name: doador doador_endereco_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.doador
+    ADD CONSTRAINT doador_endereco_fk FOREIGN KEY (cd_endereco) REFERENCES public.endereco(cd_endereco) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- TOC entry 2713 (class 2606 OID 41725)
+-- Name: endereco endereco_municipio_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.endereco
+    ADD CONSTRAINT endereco_municipio_fk FOREIGN KEY (cd_municipio) REFERENCES public.municipio(cd_municipio) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- TOC entry 2714 (class 2606 OID 41720)
+-- Name: municipio municipio_estado_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.municipio
+    ADD CONSTRAINT municipio_estado_fk FOREIGN KEY (cd_estado) REFERENCES public.estado(cd_estado) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+-- Completed on 2018-09-14 18:34:09
+
+--
+-- PostgreSQL database dump complete
+--
+
