@@ -10,5 +10,6 @@ namespace BancoSangueAPI.Model
         public int Codigo { get; set; }
         public string Descricao { get; set; }
         public Endereco Endereco{ get; set; }
+        public int CodigoEndereco { get; set; }
     }
 }
