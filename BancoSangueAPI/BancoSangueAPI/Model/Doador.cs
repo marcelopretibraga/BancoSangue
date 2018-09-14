@@ -17,6 +17,13 @@ namespace BancoSangueAPI.Model
         public double Peso { get; set; }
         public TipoSanguineo TipoSanguineo { get; set; }
         public Endereco Endereco { get; set; }
+        public SexoEnum Sexo { get; set; }
         //Mappings
+    }
+
+    public enum SexoEnum
+    {
+        Masculino = 1,
+        Femenino = 2
     }
 }
