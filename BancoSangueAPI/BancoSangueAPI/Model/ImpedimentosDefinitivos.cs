@@ -7,8 +7,8 @@ namespace BancoSangueAPI.Model
 {
     public class ImpedimentosDefinitivos
     {
-        public int codigo { get; set; }
-        public string descricao { get; set; }
-        public DateTime dataRegistro { get; set; }
+        public int Codigo { get; set; }
+        public string Descricao { get; set; }
+        public DateTime DataRegistro { get; set; }
     }
 }
