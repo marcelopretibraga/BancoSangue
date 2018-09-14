@@ -16,6 +16,7 @@ namespace BancoSangueAPI.Mappings
             builder.Property(i => i.Codigo).HasColumnName("cd_impedimentosdefinitivos");
             builder.Property(i => i.Descricao).HasColumnName("ds_impedimentosdefinitivos");
             builder.Property(i => i.DataRegistro).HasColumnName("dt_impedimentosdefinitivos");
+            builder.HasKey(i => i.Codigo);
         }
     }
 }
