@@ -25,10 +25,10 @@ namespace BancoSangueAPI.Repository
 
         public void Dispose()
         {
-            Dispose();
+            //Dispose();
         }
 
-        public List<ImpedimentosDefinitivos> GetAll =>
+        public List<ImpedimentosDefinitivos> GetAll() =>
             _context.ImpedimentosDefinitivos.ToList();
 
         public ImpedimentosDefinitivos GetById(int id) =>
@@ -45,6 +45,6 @@ namespace BancoSangueAPI.Repository
             _context.ImpedimentosDefinitivos.Update(impedimentosDefinitivos);
             _context.SaveChanges();
         }
-
+      
     }
 }

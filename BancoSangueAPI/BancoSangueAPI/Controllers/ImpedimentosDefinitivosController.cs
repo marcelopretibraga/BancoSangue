@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BancoSangueAPI.Model;
+using BancoSangueAPI.Repository;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +14,26 @@ namespace BancoSangueAPI.Controllers
 
     public class ImpedimentosDefinitivosController : Controller
     {
+        private readonly IImpedimentosDefinitivosRepository _impedimentosDefinitivosRepository;
+
+
+        public ImpedimentosDefinitivosController(IImpedimentosDefinitivosRepository impedimentosDefinitivosRepository)
+        {
+            _impedimentosDefinitivosRepository = impedimentosDefinitivosRepository;
+        }
+
+        [HttpGet]
+        public IEnumerable<ImpedimentosDefinitivos> GetAll() =>
+            _impedimentosDefinitivosRepository.GetAll();
+
+        [HttpPost]
+        public void Save([FromBody] ImpedimentosDefinitivos impedimentosDefinitivos) =>
+            _impedimentosDefinitivosRepository.Save(impedimentosDefinitivos);
+
+        [HttpPut]
+        public void Update([FromBody] ImpedimentosDefinitivos impedimentosDefinitivos) =>
+            _impedimentosDefinitivosRepository.Update(impedimentosDefinitivos);
+        [HttpGet] public IEnumerable<ImpedimentosDefinitivos> GetId
+
     }
 }
