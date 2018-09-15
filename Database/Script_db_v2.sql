@@ -6,7 +6,7 @@
 
 
 create table intervalodoacao (
-  cd_intervalodoacao serial not null primary key,
+  cd_intervalodoacao integer not null primary key,
   cd_doador integer,
   dt_ultimadoacao date,
   cd_pontocoleta integer
@@ -25,7 +25,7 @@ alter table intervalodoacao
 
 
 create table usuario (
-  cd_usuario serial not null primary key,
+  cd_usuario integer not null primary key,
   login_usuario varchar(60),
   senha_usuario varchar(60),
   email_usuario varchar(60)

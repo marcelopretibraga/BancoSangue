@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BancoSangueAPI.Model;
+using BancoSangueAPI.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,119 +13,53 @@ namespace BancoSangueAPI.Controllers
     [Route("api/IntervaloDoacao")]
     public class IntervaloDoacaoController : Controller
     {
-        private readonly BancoSangueContext _context;
-        /// <summary>
-        /// Controller Reponsável por dar Manutenção na table Intervalo de Doacao
-        /// </summary>
-        /// <param name="context"></param>
-        public IntervaloDoacaoController(BancoSangueContext context)
+        private readonly IIntervaloDoacaoRepository _intervaloDoacaoRepository;
+
+        public IntervaloDoacaoController(IIntervaloDoacaoRepository intervaloDoacaoRepository)
         {
-            _context = context;
+            _intervaloDoacaoRepository = intervaloDoacaoRepository;
         }
 
         /// <summary>
         /// Metodo que retorna todos os Intervalos de Doacao
         /// </summary>
-        /// <returns>Lista de Intervalos de Doacao</returns>
+        /// <returns>Lista de IntervaloDoacao</returns>
         [HttpGet]
-        public IEnumerable<IntervaloDoacao> GetIntervaloDoacaos()
-        {
-            return _context.IntervaloDoacao;
-        }
+        public IEnumerable<IntervaloDoacao> GetAll() =>
+            _intervaloDoacaoRepository.GetAll();
 
-        // GET: api/IntervaloDoacao/5
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetIntervaloDoacao([FromRoute] int id)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        /// <summary>
+        /// Metodo que retorna o Intervalos de Doacao por ID
+        /// </summary>
+        /// <param Codigo do IntervaloDoacao="id"></param>
+        /// <returns>IntervaloDoacao</returns>
+        [HttpGet]
+        [Route("GetById")]
+        public IntervaloDoacao GetById(int id) =>
+            _intervaloDoacaoRepository.GetById(id);
 
-            var intervaloDoacao = await _context.Estado.SingleOrDefaultAsync(m => m.Codigo == id);
-
-            if (intervaloDoacao == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(intervaloDoacao);
-        }
-
-        // PUT: api/IntervaloDoacao/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutIntervaloDoacao([FromRoute] int id, [FromBody] IntervaloDoacao intervaloDoacao)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != intervaloDoacao.Codigo)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(intervaloDoacao).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!IntervaloDoacaoExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
-        // POST: api/IntervaloDoacao
+        /// <summary>
+        /// Metodo que salva um Intervalo de Doacao
+        /// </summary>
+        /// <param IntervaloDoacao a ser salvo="intervaloDoacao"></param>
         [HttpPost]
-        public async Task<IActionResult> PostIntervaloDoacao([FromBody] IntervaloDoacao intervaloDoacao)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        public void Save([FromBody] IntervaloDoacao intervaloDoacao) =>
+            _intervaloDoacaoRepository.Save(intervaloDoacao);
 
-            _context.IntervaloDoacao.Add(intervaloDoacao);
-            await _context.SaveChangesAsync();
+        /// <summary>
+        /// Metodo que deleta um Intervalo de Doacao
+        /// </summary>
+        /// <param Codigo do IntervaloDoacao a ser deletado="codigo"></param>
+        [HttpDelete]
+        public void Delete(int codigo) =>
+            _intervaloDoacaoRepository.Delete(codigo);
 
-            return CreatedAtAction("GetIntervaloDoacao", new { id = intervaloDoacao.Codigo }, intervaloDoacao);
-        }
-
-        // DELETE: api/IntervaloDoacao/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteIntervaloDoacao([FromRoute] int id)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var intervaloDoacao = await _context.IntervaloDoacao.SingleOrDefaultAsync(i => i.Codigo == id);
-            if (intervaloDoacao == null)
-            {
-                return NotFound();
-            }
-
-            _context.IntervaloDoacao.Remove(intervaloDoacao);
-            await _context.SaveChangesAsync();
-
-            return Ok(intervaloDoacao);
-        }
-
-        private bool IntervaloDoacaoExists(int id)
-        {
-            return _context.IntervaloDoacao.Any(i => i.Codigo == id);
-        }
+        /// <summary>
+        /// Metodo que altera um Intervalo de Doacao
+        /// </summary>
+        /// <param IntervaloDoacao a ser alterado="intervaloDoacao"></param>
+        [HttpPut]
+        public void Update(IntervaloDoacao intervaloDoacao) =>
+            _intervaloDoacaoRepository.Update(intervaloDoacao);
     }
 }
