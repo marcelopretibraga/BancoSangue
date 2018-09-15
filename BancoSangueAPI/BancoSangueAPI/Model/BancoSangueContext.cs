@@ -22,6 +22,7 @@ namespace BancoSangueAPI.Model
         public DbSet<Estado> Estado { get; set; }
         public DbSet<IntervaloDoacao> IntervaloDoacao { get; set; }
         public DbSet<Usuario> Usuario { get; set; }
+        public DbSet<PontoColeta> PontoColeta { get; set; }
 
         /// <summary>
         /// Classe Responsável por Relacionar o MAP com a sua Entidade
@@ -34,6 +35,7 @@ namespace BancoSangueAPI.Model
             modelBuilder.ApplyConfiguration(new EstadoMap());
             modelBuilder.ApplyConfiguration(new IntervaloDoacaoMap());
             modelBuilder.ApplyConfiguration(new UsuarioMap());
+            modelBuilder.ApplyConfiguration(new PontoColetaMap());
         }
     }
 }
