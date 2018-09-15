@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BancoSangueAPI.Model;
 
 namespace BancoSangueAPI.Model
 {
@@ -37,5 +38,11 @@ namespace BancoSangueAPI.Model
             modelBuilder.ApplyConfiguration(new UsuarioMap());
             modelBuilder.ApplyConfiguration(new PontoColetaMap());
         }
+
+        /// <summary>
+        /// Classe Responsável por Relacionar o MAP com a sua Entidade
+        /// </summary>
+        /// <param name="modelBuilder"></param>
+        public DbSet<BancoSangueAPI.Model.Doador> Doador { get; set; }
     }
 }

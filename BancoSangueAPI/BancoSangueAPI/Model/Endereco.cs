@@ -15,5 +15,6 @@ namespace BancoSangueAPI.Model
         public int Cep { get; set; }
         public int CodigoMunicipio { get; set; }
         public Municipio Municipio { get; set; }
+        public Doador Doador { get; set; }
     }
 }
