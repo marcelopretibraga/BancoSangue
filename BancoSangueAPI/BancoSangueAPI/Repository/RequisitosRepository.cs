@@ -18,32 +18,32 @@ namespace BancoSangueAPI.Repository
 
         public void Delete(int codigo)
         {
-            throw new NotImplementedException();
+            var requisitosRemover = _context.Requisitos.Where(r =>r.Codigo == codigo).FirstOrDefault();
+            _context.Requisitos.Remove(requisitosRemover);
+            _context.SaveChanges();
         }
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+          
         }
 
-        public List<RequisitosBasicos> GetAll()
-        {
-            throw new NotImplementedException();
-        }
+        public List<RequisitosBasicos> GetAll() =>
+            _context.Requisitos.ToList();
 
-        public RequisitosBasicos GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
+        public RequisitosBasicos GetById(int id) =>
+            _context.Requisitos.Where(r => r.Codigo == id).FirstOrDefault();
 
         public void Save(RequisitosBasicos requisitosBasicos)
         {
-            throw new NotImplementedException();
+            _context.Requisitos.Add(requisitosBasicos);
+            _context.SaveChanges();
         }
 
         public void Update(RequisitosBasicos requisitosBasicos)
         {
-            throw new NotImplementedException();
+            _context.Requisitos.Update(requisitosBasicos);
+            _context.SaveChanges();
         }
     }
 }
