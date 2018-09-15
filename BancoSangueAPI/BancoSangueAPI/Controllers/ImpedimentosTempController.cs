@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 namespace BancoSangueAPI.Controllers
 {
     [Produces("application/json")]
-    [Route("api/Municipio")]
+    [Route("api/ImpedimentosTemp")]
     public class ImpedimentosTempController : Controller
     {
         private readonly IImpedimentosTempRepository _impedimentosTempRepository;
