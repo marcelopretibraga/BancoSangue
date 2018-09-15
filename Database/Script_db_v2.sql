@@ -25,7 +25,7 @@ alter table intervalodoacao
 
 
 create table usuario (
-  cd_usuario serial not null,
+  cd_usuario serial not null primary key,
   login_usuario varchar(60),
   senha_usuario varchar(60),
   email_usuario varchar(60)
