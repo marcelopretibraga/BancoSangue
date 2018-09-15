@@ -20,7 +20,7 @@ namespace BancoSangueAPI.Model
         public DbSet<Endereco> Endereco { get; set; }
         public DbSet<Municipio> Municipio { get; set; }
         public DbSet<Estado> Estado { get; set; }
-        public DbSet<ImpedimentosDefinitivos> impedimentosDefinitivos { get; set; }
+        public DbSet<ImpedimentosDefinitivos> ImpedimentosDefinitivos { get; set; }
 
         /// <summary>
         /// Classe Responsável por Relacionar o MAP com a sua Entidade

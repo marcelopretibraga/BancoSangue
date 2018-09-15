@@ -10,6 +10,8 @@ namespace BancoSangueAPI.Repository
     {
         private readonly BancoSangueContext _context;
 
+
+
         public MunicipioRepository(BancoSangueContext context)
         {
             _context = context;
