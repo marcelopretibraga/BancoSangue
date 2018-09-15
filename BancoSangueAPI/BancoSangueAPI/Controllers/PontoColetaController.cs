@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 
 namespace BancoSangueAPI.Controllers
 {
+    [Produces("application/json")]
+    [Route("api/PontoColeta")]
     public class PontoColetaController : Controller
     {
         private readonly IPontoColetaRepository _pontoColetaRepository;

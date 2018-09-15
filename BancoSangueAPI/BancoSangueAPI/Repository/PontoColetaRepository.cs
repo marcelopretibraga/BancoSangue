@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BancoSangueAPI.Repository
 {
-    public class PontoColetaRepository
+    public class PontoColetaRepository : IPontoColetaRepository
     {
         private readonly BancoSangueContext _context;
 
