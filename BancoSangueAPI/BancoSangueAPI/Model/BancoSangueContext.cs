@@ -20,6 +20,8 @@ namespace BancoSangueAPI.Model
         public DbSet<Endereco> Endereco { get; set; }
         public DbSet<Municipio> Municipio { get; set; }
         public DbSet<Estado> Estado { get; set; }
+        public DbSet<IntervaloDoacao> IntervaloDoacao { get; set; }
+        public DbSet<Usuario> Usuario { get; set; }
 
         /// <summary>
         /// Classe Responsável por Relacionar o MAP com a sua Entidade
@@ -30,6 +32,8 @@ namespace BancoSangueAPI.Model
             modelBuilder.ApplyConfiguration(new EnderecoMap());
             modelBuilder.ApplyConfiguration(new MunicipioMap());
             modelBuilder.ApplyConfiguration(new EstadoMap());
+            modelBuilder.ApplyConfiguration(new IntervaloDoacaoMap());
+            modelBuilder.ApplyConfiguration(new UsuarioMap());
         }
     }
 }
