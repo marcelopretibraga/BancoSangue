@@ -3,21 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BancoSangueAPI.Model;
+using BancoSangueAPI.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace BancoSangueAPI.Controllers
 {
+    [Produces("application/json")]
+    [Route("api/Municipio")]
     public class ImpedimentosTempController : Controller
     {
-        private readonly BancoSangueContext _context;
+        private readonly IImpedimentosTempRepository _impedimentosTempRepository;
         /// <summary>
         /// Controller Reponsável por dar Manutenção na table ImpedimentosTemp
         /// </summary>
         /// <param name="context"></param>
-        public ImpedimentosTempController(BancoSangueContext context)
+        public ImpedimentosTempController(IImpedimentosTempRepository impedimentosTempRepository)
         {
-            _context = context;
+            _impedimentosTempRepository = impedimentosTempRepository;
         }
 
         /// <summary>
@@ -25,10 +28,12 @@ namespace BancoSangueAPI.Controllers
         /// </summary>
         /// <returns>Lista de Estados</returns>
         [HttpGet]
-        public IEnumerable<ImpedimentosTemp> GetImpedimentosTemp()
-        {
-            return _context.ImpedimentosTemp;
-        }
+        public IEnumerable<ImpedimentosTemp> GetAll() =>
+            _impedimentosTempRepository.GetAll();
+
+        [HttpPost]
+        public void Save([FromBody] ImpedimentosTemp impedimentoTemp) =>
+            _impedimentosTempRepository.Save(impedimentoTemp);
 
         // GET: api/ImpedimentosTemp/5
         [HttpGet("{id}")]
@@ -39,7 +44,7 @@ namespace BancoSangueAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            var impedimentoTemp = await _context.ImpedimentosTemp.SingleOrDefaultAsync(i => i.Codigo == id);
+            var impedimentoTemp = await _impedimentosTempRepository.ImpedimentosTemp.SingleOrDefaultAsync(i => i.Codigo == id);
 
             if (impedimentoTemp == null)
             {
@@ -51,7 +56,7 @@ namespace BancoSangueAPI.Controllers
 
         private bool impedimentoTempExists(int id)
         {
-            return _context.ImpedimentosTemp.Any(i => i.Codigo == id);
+            return _impedimentosTempRepository.ImpedimentosTemp.Any(i => i.Codigo == id);
         }
 
         // PUT: api/ImpedimentosTemp/5
@@ -68,11 +73,11 @@ namespace BancoSangueAPI.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(impedimentoTemp).State = EntityState.Modified;
+            _impedimentosTempRepository.Entry(impedimentoTemp).State = EntityState.Modified;
 
             try
             {
-                await _context.SaveChangesAsync();
+                await _impedimentosTempRepository.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -98,8 +103,8 @@ namespace BancoSangueAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            _context.ImpedimentosTemp.Add(impedimentoTemp);
-            await _context.SaveChangesAsync();
+            _impedimentosTempRepository.ImpedimentosTemp.Add(impedimentoTemp);
+            await _impedimentosTempRepository.SaveChangesAsync();
 
             return CreatedAtAction("GetImpedimentosTemp", new { id = impedimentoTemp.Codigo }, impedimentoTemp);
         }
@@ -113,14 +118,14 @@ namespace BancoSangueAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            var impedimentoTemp = await _context.ImpedimentosTemp.SingleOrDefaultAsync(i => i.Codigo == id);
+            var impedimentoTemp = await _impedimentosTempRepository.ImpedimentosTemp.SingleOrDefaultAsync(i => i.Codigo == id);
             if (impedimentoTemp == null)
             {
                 return NotFound();
             }
 
-            _context.ImpedimentosTemp.Remove(impedimentoTemp);
-            await _context.SaveChangesAsync();
+            _impedimentosTempRepository.ImpedimentosTemp.Remove(impedimentoTemp);
+            await _impedimentosTempRepository.SaveChangesAsync();
 
             return Ok(impedimentoTemp);
         }
