@@ -33,7 +33,14 @@ namespace BancoSangueAPI.Controllers
         [HttpPut]
         public void Update([FromBody] ImpedimentosDefinitivos impedimentosDefinitivos) =>
             _impedimentosDefinitivosRepository.Update(impedimentosDefinitivos);
-        [HttpGet] public IEnumerable<ImpedimentosDefinitivos> GetId
+
+        [HttpGet]
+        public ImpedimentosDefinitivos GetById(int id) =>
+           _impedimentosDefinitivosRepository.GetById(id);
+
+        [HttpDelete]
+        public void Delete([FromBody] int id) =>
+            _impedimentosDefinitivosRepository.Delete(id);
 
     }
 }
