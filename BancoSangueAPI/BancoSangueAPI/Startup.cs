@@ -41,8 +41,9 @@ namespace BancoSangueAPI
 
             #region ......Configuração Repository........
             services.AddTransient<IMunicipioRepository, MunicipioRepository>();
+            services.AddTransient<IRequisitosRepository,RequisitosRepository>();
             #endregion
-            
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
