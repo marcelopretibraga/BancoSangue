@@ -8,10 +8,11 @@ using System.Threading.Tasks;
 
 namespace BancoSangueAPI.Mappings
 {
-    public class RequisitosBasicosMap
-    {
-        public class MunicipioMap : IEntityTypeConfiguration<Model.RequisitosBasicos>
+  
+        public class RequisitosBasicosMap : IEntityTypeConfiguration<RequisitosBasicos>
         {
+           
+
             public void Configure(EntityTypeBuilder<RequisitosBasicos> builder)
             {
                 builder.ToTable("requisitosbasicos");
