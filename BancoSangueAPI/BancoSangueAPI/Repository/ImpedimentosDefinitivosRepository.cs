@@ -18,21 +18,23 @@ namespace BancoSangueAPI.Repository
 
         public void Delete(int codigo)
         {
-            var ImpDefRemover = _context.ImpedimentosDefinitivos.Where(i => i.Codigo == codigo).FirstOrDefault();
-            _context.ImpedimentosDefinitivos.Remove(ImpDefRemover);
+            var removeID = _context.ImpedimentosDefinitivos.Where(i => i.Codigo == codigo).FirstOrDefault();
+            _context.ImpedimentosDefinitivos.Remove(removeID);
             _context.SaveChanges();
         }
 
         public void Dispose()
         {
-            //Dispose();
+
         }
 
         public List<ImpedimentosDefinitivos> GetAll() =>
             _context.ImpedimentosDefinitivos.ToList();
 
+
         public ImpedimentosDefinitivos GetById(int id) =>
             _context.ImpedimentosDefinitivos.Where(i => i.Codigo == id).FirstOrDefault();
+
 
         public void Save(ImpedimentosDefinitivos impedimentosDefinitivos)
         {

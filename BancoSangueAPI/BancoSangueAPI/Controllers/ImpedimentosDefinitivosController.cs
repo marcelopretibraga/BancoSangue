@@ -11,11 +11,9 @@ namespace BancoSangueAPI.Controllers
 {
     [Produces("application/json")]
     [Route("api/ImpedimentosDefinitivos")]
-
     public class ImpedimentosDefinitivosController : Controller
     {
         private readonly IImpedimentosDefinitivosRepository _impedimentosDefinitivosRepository;
-
 
         public ImpedimentosDefinitivosController(IImpedimentosDefinitivosRepository impedimentosDefinitivosRepository)
         {
@@ -23,30 +21,29 @@ namespace BancoSangueAPI.Controllers
         }
 
         /// <summary>
-        /// Metodo que salva um ImpedimentosTemporarios
+        /// Metodo que retorna todos os Municipios
         /// </summary>
-        /// <param impedimentoDefinitivo será salvo></param>
+        /// <returns>Lista de municipios</returns>
+        [HttpGet]
+        public IEnumerable<ImpedimentosDefinitivos> GetAll() =>
+            _impedimentosDefinitivosRepository.GetAll();
 
         [HttpPost]
         public void Save([FromBody] ImpedimentosDefinitivos impedimentosDefinitivos) =>
             _impedimentosDefinitivosRepository.Save(impedimentosDefinitivos);
 
-
         [HttpPut]
-        public void Update([FromBody] ImpedimentosDefinitivos impedimentosDefinitivos) =>
-            _impedimentosDefinitivosRepository.Update(impedimentosDefinitivos);
+        public void Update(ImpedimentosDefinitivos impedimentoTemp) =>
+            _impedimentosDefinitivosRepository.Update(impedimentoTemp);
 
-
-       
         [HttpDelete]
-        public void Delete([FromBody] int id) =>
-            _impedimentosDefinitivosRepository.Delete(id);
+        public void Delete(int codigo) =>
+            _impedimentosDefinitivosRepository.Delete(codigo);
 
         [HttpGet]
-        public IEnumerable<ImpedimentosDefinitivos> GetAll() =>
-            _impedimentosDefinitivosRepository.GetAll();
-
-
+        [Route("id")]
+        public ImpedimentosDefinitivos GetById(int id) =>
+            _impedimentosDefinitivosRepository.GetById(id);
 
     }
 }
