@@ -23,6 +23,11 @@ namespace BancoSangueAPI.Repository
             _context.SaveChanges();
         }
 
+        public void Delete(RequisitosBasicos requisitos)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Dispose()
         {
           

@@ -17,16 +17,21 @@ namespace BancoSangueAPI.Controllers
         {
             _requisitosRepository = requisitosRepository;
         }
+        [HttpGet]
+        public  IEnumerable <RequisitosBasicos> GetAll() => 
+            _requisitosRepository.GetAll();
+
+       
         [HttpPost]
         public void Save([FromBody] RequisitosBasicos requisitos) =>
           _requisitosRepository.Save(requisitos);
 
         [HttpDelete]
         public void Delete([FromBody] RequisitosBasicos requisitos) =>
-        _requisitosRepository.Save(requisitos);
+        _requisitosRepository.Delete(requisitos);
 
         [HttpPut]
         public void Update([FromBody] RequisitosBasicos requisitos) =>
-     _requisitosRepository.Save(requisitos);
+     _requisitosRepository.Update(requisitos);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,6 +8,7 @@ namespace BancoSangueAPI.Model
 {
     public class RequisitosBasicos
     {
+        [Key] 
         public int Codigo { get; set; }
         public String Descricao { get; set; }
         public DateTime Data { get; set; }

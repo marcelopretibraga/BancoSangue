@@ -15,5 +15,6 @@ namespace BancoSangueAPI.Repository
 
         List<RequisitosBasicos> GetAll();
         RequisitosBasicos GetById(int id);
+        void Delete(RequisitosBasicos requisitos);
     }
 }
