@@ -12,7 +12,7 @@ namespace BancoSangueAPI.Repository
         void Update(Endereco endereco);
         void Delete(int id);
         List<Endereco> getAll();
-        Endereco getById();
-        Endereco getByDoador(int DoadorId);
+        Endereco GetById(int Id);
+        //IEnumerable<Endereco> GetByDoador(int DoadorId);
     }
 }

@@ -18,15 +18,12 @@ namespace BancoSangueAPI.Repository
         public List<Endereco> getAll() =>
             _context.Endereco.ToList();
 
-        public IEnumerable<Endereco> getByDoador(int DoadorId)
-        {
-            _context.Endereco.Where(E => E.Doador.Codigo == DoadorId).FirstOrDefault();
-        }
+        /*public IEnumerable<Endereco> GetByDoador(int DoadorId) =>
+            _context.Endereco.Where(E => E.Doador.Codigo == DoadorId).FirstOrDefault();*/
 
-        public Endereco getById()
-        {
+        public Endereco getById(int Id) =>
             throw new NotImplementedException();
-        }
+
 
         public void Save(Endereco endereco)
         {
@@ -41,6 +38,11 @@ namespace BancoSangueAPI.Repository
         public void Delete(int id)
         {
 
+        }
+
+        public Endereco GetById(int Id)
+        {
+            throw new NotImplementedException();
         }
     }
 }
