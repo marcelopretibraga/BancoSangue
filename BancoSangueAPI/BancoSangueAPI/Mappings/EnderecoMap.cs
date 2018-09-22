@@ -20,7 +20,6 @@ namespace BancoSangueAPI.Mappings
             builder.Property(e => e.Bairro).HasColumnName("ds_bairro");
             builder.Property(e => e.Cep).HasColumnName("nr_cep");
             builder.HasOne(e => e.Municipio).WithMany().HasForeignKey(m => m.CodigoMunicipio);
-
             builder.HasKey(e => e.Codigo);
         }
     }

@@ -9,5 +9,10 @@ namespace BancoSangueAPI.Repository
     public interface IDoadorRepository : IDisposable
     {
         void Save(Doador Doador);
+        void Update(Doador doador);
+        void Delete(int Id);
+        List<Doador> getAll();
+        Doador getById(int Id);
+
     }
 }

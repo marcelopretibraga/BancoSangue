@@ -25,7 +25,6 @@ namespace BancoSangueAPI.Mappings
             builder.Property(d => d.Sexo).HasColumnName("sexo");
             builder.HasMany(d => d.Enderecos).WithOne().HasForeignKey(e => e.Doador);
             builder.HasKey(d => d.Codigo);
-           
         }
     }
 }

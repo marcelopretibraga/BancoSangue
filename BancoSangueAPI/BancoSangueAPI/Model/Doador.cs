@@ -21,12 +21,11 @@ namespace BancoSangueAPI.Model
         public List<Endereco> Enderecos { get; set; }
         public int CodigoEndereco { get; set; }
         public SexoEnum Sexo { get; set; }
-        //Mappings
     }
 
     public enum SexoEnum
     {
         Masculino = 1,
-        Femenino = 2
+        Feminino = 2
     }
 }
