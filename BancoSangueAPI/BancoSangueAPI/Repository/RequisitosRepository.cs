@@ -10,8 +10,9 @@ namespace BancoSangueAPI.Repository
     
 {
           private readonly BancoSangueContext _context;
+      
 
-    public RequisitosRepository(BancoSangueContext context)
+        public RequisitosRepository(BancoSangueContext context)
     {
         _context = context;
     }
@@ -25,7 +26,7 @@ namespace BancoSangueAPI.Repository
 
         public void Delete(RequisitosBasicos requisitos)
         {
-            throw new NotImplementedException();
+           
         }
 
         public void Dispose()

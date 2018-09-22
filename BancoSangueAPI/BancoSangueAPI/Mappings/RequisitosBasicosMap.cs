@@ -16,7 +16,7 @@ namespace BancoSangueAPI.Mappings
             public void Configure(EntityTypeBuilder<RequisitosBasicos> builder)
             {
                 builder.ToTable("requisitosbasicos");
-                builder.Property(r => r.Codigo).HasColumnName("cd_requisito");
+                builder.Property(r => r.Codigo).HasColumnName("cd_requisitos");
                 builder.Property(r => r.Descricao).HasColumnName("descricao");
                 builder.Property(r => r.Data).HasColumnName("data");
             }

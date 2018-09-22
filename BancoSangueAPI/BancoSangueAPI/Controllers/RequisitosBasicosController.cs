@@ -28,7 +28,7 @@ namespace BancoSangueAPI.Controllers
 
         [HttpDelete]
         public void Delete([FromBody] RequisitosBasicos requisitos) =>
-        _requisitosRepository.Delete(requisitos);
+        _requisitosRepository.Delete(requisitos: requisitos);
 
         [HttpPut]
         public void Update([FromBody] RequisitosBasicos requisitos) =>
