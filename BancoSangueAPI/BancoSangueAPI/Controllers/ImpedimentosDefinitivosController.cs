@@ -20,10 +20,6 @@ namespace BancoSangueAPI.Controllers
             _impedimentosDefinitivosRepository = impedimentosDefinitivosRepository;
         }
 
-        /// <summary>
-        /// Metodo que retorna todos os Municipios
-        /// </summary>
-        /// <returns>Lista de municipios</returns>
         [HttpGet]
         public IEnumerable<ImpedimentosDefinitivos> GetAll() =>
             _impedimentosDefinitivosRepository.GetAll();
