@@ -1,0 +1,37 @@
+/* You can add global styles to this file, and also import other style files */
+@font-face { font-family: "Hind"; src: url("./assets/fonts/Hind-Light.ttf"); font-weight: 300;}
+@font-face { font-family: "Hind"; src: url("./assets/fonts/Hind-Regular.ttf"); font-weight: 400;}
+@font-face { font-family: "Hind"; src: url("./assets/fonts/Hind-Medium.ttf"); font-weight: 500; }
+@font-face { font-family: "Hind"; src: url("./assets/fonts/Hind-SemiBold.ttf"); font-weight: 600;}
+@font-face { font-family: "Hind"; src: url("./assets/fonts/Hind-Bold.ttf"); font-weight: 700; }
+
+
+.link_action{
+    cursor: pointer;
+}
+
+.custom-dialog .mat-dialog-container { 
+    overflow: none;
+    padding: 0; 
+    height: 200px; 
+    width: 450px;
+}
+
+.custom-dialog .mat-dialog-content{
+    display: inline;
+    margin: 0;
+}
+
+.custom-dialog .mat-dialog-title{
+    margin: 10px 24px 20px;
+    color: #bd1a2a;
+}
+
+.custom-dialog .mat-dialog-actions{
+    padding: 12px 24px
+ 
+}
+ 
+mat-icon{
+    cursor: pointer;
+}

@@ -28,14 +28,16 @@ namespace BancoSangueAPI.Controllers
         /// </summary>
         /// <returns>Lista de Estados</returns>
         [HttpGet]
+        [Route("GetAll")]
         public IEnumerable<Estado> GetEstado()
         {
             return _context.Estado;
         }
 
         // GET: api/Estado/5
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetEstado([FromRoute] int id)
+        [HttpGet]
+        [Route("GetById/{id:int}")]
+        public async Task<IActionResult> GetEstado(int id)
         {
             if (!ModelState.IsValid)
             {
@@ -53,17 +55,13 @@ namespace BancoSangueAPI.Controllers
         }
 
         // PUT: api/Estado/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutEstado([FromRoute] int id, [FromBody] Estado estado)
+        [HttpPut]
+        [Route("Update")]
+        public async Task<IActionResult> PutEstado([FromBody] Estado estado)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
-            }
-
-            if (id != estado.Codigo)
-            {
-                return BadRequest();
             }
 
             _context.Entry(estado).State = EntityState.Modified;
@@ -74,21 +72,15 @@ namespace BancoSangueAPI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!EstadoExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                throw;
             }
 
-            return NoContent();
+            return Ok(estado);
         }
 
         // POST: api/Estado
         [HttpPost]
+        [Route("Save")]
         public async Task<IActionResult> PostEstado([FromBody] Estado estado)
         {
             if (!ModelState.IsValid)
@@ -103,8 +95,9 @@ namespace BancoSangueAPI.Controllers
         }
 
         // DELETE: api/Estado/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteEstado([FromRoute] int id)
+        [HttpDelete]
+        [Route("Remove")]
+        public async Task<IActionResult> DeleteEstado(int id)
         {
             if (!ModelState.IsValid)
             {
