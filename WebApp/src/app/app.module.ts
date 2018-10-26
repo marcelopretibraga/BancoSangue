@@ -48,6 +48,7 @@ import {
 } from '@angular/material';
 import { SpinnerService } from './shared/services/spinner.service';
 import { EstadoNovoComponent } from './cadastros/estado/estado-novo/estado-novo.component';
+import { MunicipioComponent } from './cadastros/municipio/municipio/municipio.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { EstadoNovoComponent } from './cadastros/estado/estado-novo/estado-novo.
     EstadoComponent,
     PageNotFoundComponent,
     DialogComponent,
-    EstadoNovoComponent    
+    EstadoNovoComponent,
+    MunicipioComponent    
   ],
   imports: [
     BrowserModule,

@@ -14,6 +14,6 @@ export class StringValidation {
 
     static minCaracteres(value: string, tamanho: number){
         if (value.length < tamanho)
-        return value;
+            return value;
     }
 } 
