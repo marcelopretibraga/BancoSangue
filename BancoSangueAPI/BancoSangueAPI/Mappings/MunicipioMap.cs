@@ -20,7 +20,7 @@ namespace BancoSangueAPI.Mappings
             builder.Property(m => m.Pib).HasColumnName("vl_pib");
             builder.Property(m => m.CodigoEstado).HasColumnName("cd_estado");
             //Municipio tem um Estado e aponta pra FK do Banco Cuja Property é Codigo
-            builder.HasOne(m => m.Estado).WithMany().HasForeignKey(e => e.CodigoEstado);
+            //builder.HasOne(m => m.Estado).WithMany().HasForeignKey(e => e.CodigoEstado);
             builder.HasKey(m => m.Codigo);
         }
     }

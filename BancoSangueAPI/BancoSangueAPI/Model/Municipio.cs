@@ -13,6 +13,6 @@ namespace BancoSangueAPI.Model
         public int Populacao { get; set; }
         public double Pib { get; set; }
         public int CodigoEstado { get; set; }
-        public Estado Estado { get; set; }
+        //public Estado Estado { get; set; }
     }
 }
