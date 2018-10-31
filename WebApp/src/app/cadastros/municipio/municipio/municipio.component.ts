@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Municipio} from "../../municipio/models/municipio";
 import { EstadoService } from '../../estado/estado.service';
 import { Estado } from '../../estado/estado/models/estado';
+import { MunicipioService } from '../municipio.service';
 
 @Component({
   selector: 'app-municipio',
@@ -13,7 +14,8 @@ export class MunicipioComponent implements OnInit {
   private municipio: Municipio;
   public estados: Array<Estado>;
 
-  constructor(private estadoService: EstadoService
+  constructor(private estadoService: EstadoService, 
+              private municipioService: MunicipioService
   ) { }
   
   ngOnInit() {
@@ -25,8 +27,6 @@ export class MunicipioComponent implements OnInit {
     this.estadoService.listarTodos().subscribe(dadosRetorno => {
       if (dadosRetorno != null){
         this.estados = dadosRetorno;
-        console.log("Dados de Estado Retornados");
-        console.log(dadosRetorno);
       }
     })
   }
@@ -34,6 +34,12 @@ export class MunicipioComponent implements OnInit {
   salvar(){
     console.log("Salvando municipio")
     console.log(this.municipio)
+
+    this.municipioService.salvar(this.municipio)
+      .subscribe(retorno => {
+        if (retorno != null)
+          console.log("Salvou o Municipio")
+      });
   }
 
 }

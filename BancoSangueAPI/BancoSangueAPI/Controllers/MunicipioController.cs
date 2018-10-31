@@ -19,18 +19,23 @@ namespace BancoSangueAPI.Controllers
         {
             _municipioRepository = municipioRepository;
         }
-                        
+
         /// <summary>
         /// Metodo que retorna todos os Municipios
         /// </summary>
         /// <returns>Lista de municipios</returns>
         [HttpGet]
-        public IEnumerable<Municipio> GetAll() => 
+        [Route("GetAll")]
+        public IEnumerable<Municipio> GetAll() =>
             _municipioRepository.GetAll();
 
         [HttpPost]
-        public void Save([FromBody] Municipio municipio) =>
+        [Route("Save")]
+        public async Task<IActionResult> Save([FromBody] Municipio municipio)
+        {
             _municipioRepository.Save(municipio);
+            return Ok(municipio);
+        }
         
     }
 }

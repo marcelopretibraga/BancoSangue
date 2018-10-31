@@ -49,6 +49,7 @@ import {
 import { SpinnerService } from './shared/services/spinner.service';
 import { EstadoNovoComponent } from './cadastros/estado/estado-novo/estado-novo.component';
 import { MunicipioComponent } from './cadastros/municipio/municipio/municipio.component';
+import { MunicipioService } from './cadastros/municipio/municipio.service';
 
 @NgModule({
   declarations: [
@@ -117,6 +118,7 @@ import { MunicipioComponent } from './cadastros/municipio/municipio/municipio.co
   providers: [
     HttpClient, 
     EstadoService, 
+    MunicipioService,
     SpinnerService
   ],
   bootstrap: [AppComponent]

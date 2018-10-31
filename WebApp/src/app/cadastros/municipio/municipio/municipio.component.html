@@ -41,7 +41,7 @@
           <mat-select name="estado" placeholder="Estado" >
             <!--let == var var item in estados-->
             <mat-option *ngFor="let item of estados" [value]="item.codigo">
-              {{item.descricao}}
+              {{item.descricao}} - {{item.sigla}}
             </mat-option>
           </mat-select>
       </mat-form-field>
