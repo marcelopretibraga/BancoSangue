@@ -36,6 +36,22 @@ namespace BancoSangueAPI.Controllers
             _municipioRepository.Save(municipio);
             return Ok(municipio);
         }
-        
+
+        [HttpPut]
+        [Route("Update")]
+        public async Task<IActionResult> PutMunicipio([FromBody] Municipio municipio)
+        {
+            _municipioRepository.Update(municipio);
+            return Ok(municipio);
+        }
+
+        [HttpDelete]
+        [Route("Remove")]
+        public async Task<IActionResult> DeleteMunicipio(int id)
+        {
+            _municipioRepository.Delete(id);
+            return Ok(id);
+        }
+
     }
 }

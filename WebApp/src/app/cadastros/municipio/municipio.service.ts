@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable()
-export class MunicipioService extends BaseService{
+export class MunicipioService extends BaseService {
 
   constructor(private http: HttpClient) { 
     super();
@@ -13,8 +13,13 @@ export class MunicipioService extends BaseService{
 
   salvar(municipio: Municipio) : Observable<any> {
     //http://localhost:60615/api/Municipio/Save/
-    return this.http.post(this.UrlService + "Municipio/",
+    return this.http.post(this.UrlService + "Municipio/"+this.SalvarUrl,
        municipio).catch((error: any) => Observable.throw(error.error));
+  }
+
+  listarTodos(){
+    return this.http.get(this.UrlService + "Municipio/" + this.BuscarTodos)
+      .catch((error: any) => Observable.throw(error.error));
   }
 
 

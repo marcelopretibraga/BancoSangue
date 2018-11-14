@@ -38,7 +38,7 @@
     <!--Estado-->
     <div class="col s12 m6 l6">
         <mat-form-field>
-          <mat-select name="estado" placeholder="Estado" >
+          <mat-select name="estado" placeholder="Estado" [(ngModel)]="municipio.codigoEstado" >
             <!--let == var var item in estados-->
             <mat-option *ngFor="let item of estados" [value]="item.codigo">
               {{item.descricao}} - {{item.sigla}}

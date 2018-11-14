@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  urlWebAPI: "http://localhost:60615/api/"
+  urlWebAPI: "http://localhost:7570/api/"
 };
