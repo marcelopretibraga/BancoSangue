@@ -8,3 +8,4 @@
 *.ide-shm
 *.ide-wal
 *.dtbcache
+/BancoSangueAPI/.vs/config/applicationhost.config
