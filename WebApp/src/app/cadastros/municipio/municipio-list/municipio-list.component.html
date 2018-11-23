@@ -17,6 +17,14 @@
     <div class="col s12 m12 l12">
       <mat-table #table [dataSource]="fonteDados" matSort class="table-striped">
   
+        <ng-container matColumnDef="actionsColumn">
+          <mat-header-cell *matHeaderCellDef>Ações</mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <mat-icon class="link_action" svgIcon="form-trash" matTooltip="Excluir" (click)=excluirConfirmacao(element.codigo)></mat-icon>
+            <mat-icon class="link_action" svgIcon="form-edit" matTooltip="Editar" (click)=editar(element.codigo)></mat-icon>
+          </mat-cell>
+        </ng-container>  
+
         <ng-container matColumnDef="codigo">
           <mat-header-cell *matHeaderCellDef mat-sort-header> Codigo </mat-header-cell>
           <mat-cell *matCellDef="let element"> {{element.codigo}} </mat-cell>

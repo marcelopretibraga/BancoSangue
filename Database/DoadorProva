@@ -1,0 +1,560 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 10.4
+-- Dumped by pg_dump version 10.4
+
+-- Started on 2018-11-23 18:46:32
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 2897 (class 1262 OID 41688)
+-- Name: doadordb; Type: DATABASE; Schema: -; Owner: postgres
+--
+
+CREATE DATABASE doadordb WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'Portuguese_Brazil.1252' LC_CTYPE = 'Portuguese_Brazil.1252';
+
+
+ALTER DATABASE doadordb OWNER TO postgres;
+
+\connect doadordb
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 2898 (class 0 OID 0)
+-- Dependencies: 2897
+-- Name: DATABASE doadordb; Type: COMMENT; Schema: -; Owner: postgres
+--
+
+COMMENT ON DATABASE doadordb IS 'Database aplicação Doador de Sangue';
+
+
+--
+-- TOC entry 1 (class 3079 OID 12924)
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- TOC entry 2900 (class 0 OID 0)
+-- Dependencies: 1
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 201 (class 1259 OID 41790)
+-- Name: compatibilidadetiposanguineo; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.compatibilidadetiposanguineo (
+    cd_compatibilidade integer NOT NULL,
+    cd_tiposanguineo character varying(2) NOT NULL,
+    cd_tipo integer NOT NULL,
+    dt_record timestamp without time zone DEFAULT now(),
+    dt_update timestamp without time zone DEFAULT now()
+);
+
+
+ALTER TABLE public.compatibilidadetiposanguineo OWNER TO postgres;
+
+--
+-- TOC entry 196 (class 1259 OID 41692)
+-- Name: doador; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.doador (
+    cd_doador integer NOT NULL,
+    nm_doador character varying(100),
+    nr_cpf character varying(20) NOT NULL,
+    nr_rg character varying(20) NOT NULL,
+    nr_telefone character varying(15),
+    dt_nascimento date NOT NULL,
+    st_doador boolean NOT NULL,
+    qt_pesodoador numeric(15,2) NOT NULL,
+    dt_record timestamp without time zone DEFAULT now(),
+    dt_update timestamp without time zone DEFAULT now(),
+    cd_endereco integer NOT NULL
+);
+
+
+ALTER TABLE public.doador OWNER TO postgres;
+
+--
+-- TOC entry 197 (class 1259 OID 41699)
+-- Name: endereco; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.endereco (
+    cd_endereco integer NOT NULL,
+    nm_logradouro character varying(100),
+    nr_numero integer NOT NULL,
+    ds_complemento character varying(250) NOT NULL,
+    ds_bairro character varying(100),
+    nr_cep integer NOT NULL,
+    dt_record timestamp without time zone DEFAULT now(),
+    dt_update timestamp without time zone DEFAULT now(),
+    cd_municipio integer NOT NULL
+);
+
+
+ALTER TABLE public.endereco OWNER TO postgres;
+
+--
+-- TOC entry 198 (class 1259 OID 41706)
+-- Name: estado; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.estado (
+    cd_estado integer NOT NULL,
+    ds_estado character varying(100),
+    sg_estado character varying(2) NOT NULL,
+    dt_record timestamp without time zone DEFAULT now(),
+    dt_update timestamp without time zone DEFAULT now()
+);
+
+
+ALTER TABLE public.estado OWNER TO postgres;
+
+--
+-- TOC entry 202 (class 1259 OID 41908)
+-- Name: felipe; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.felipe (
+    nr_codigo integer NOT NULL,
+    ds_nome character varying(100) NOT NULL,
+    nr_idade integer NOT NULL,
+    vl_total numeric(15,2) NOT NULL
+);
+
+
+ALTER TABLE public.felipe OWNER TO postgres;
+
+--
+-- TOC entry 204 (class 1259 OID 41918)
+-- Name: jose; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.jose (
+    nr_codigo integer NOT NULL,
+    ds_nome character varying(100) NOT NULL,
+    nr_idade integer NOT NULL,
+    vl_total numeric(15,2) NOT NULL
+);
+
+
+ALTER TABLE public.jose OWNER TO postgres;
+
+--
+-- TOC entry 206 (class 1259 OID 41928)
+-- Name: luana; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.luana (
+    nr_codigo integer NOT NULL,
+    ds_nome character varying(100) NOT NULL,
+    nr_idade integer NOT NULL,
+    vl_total numeric(15,2) NOT NULL
+);
+
+
+ALTER TABLE public.luana OWNER TO postgres;
+
+--
+-- TOC entry 205 (class 1259 OID 41923)
+-- Name: matheus; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.matheus (
+    nr_codigo integer NOT NULL,
+    ds_nome character varying(100) NOT NULL,
+    nr_idade integer NOT NULL,
+    vl_total numeric(15,2) NOT NULL
+);
+
+
+ALTER TABLE public.matheus OWNER TO postgres;
+
+--
+-- TOC entry 199 (class 1259 OID 41713)
+-- Name: municipio; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.municipio (
+    cd_municipio integer NOT NULL,
+    ds_municipio character varying(100) NOT NULL,
+    qt_domicilios integer,
+    qt_populacao integer,
+    vl_pib numeric(18,2),
+    cd_estado integer NOT NULL,
+    dt_record timestamp without time zone DEFAULT now(),
+    dt_update timestamp without time zone DEFAULT now()
+);
+
+
+ALTER TABLE public.municipio OWNER TO postgres;
+
+--
+-- TOC entry 203 (class 1259 OID 41913)
+-- Name: norton; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.norton (
+    nr_codigo integer NOT NULL,
+    ds_nome character varying(100) NOT NULL,
+    nr_idade integer NOT NULL,
+    vl_total numeric(15,2) NOT NULL
+);
+
+
+ALTER TABLE public.norton OWNER TO postgres;
+
+--
+-- TOC entry 208 (class 1259 OID 41938)
+-- Name: pedro; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.pedro (
+    nr_codigo integer NOT NULL,
+    ds_nome character varying(100) NOT NULL,
+    nr_idade integer NOT NULL,
+    vl_total numeric(15,2) NOT NULL
+);
+
+
+ALTER TABLE public.pedro OWNER TO postgres;
+
+--
+-- TOC entry 200 (class 1259 OID 41749)
+-- Name: tiposanguineo; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.tiposanguineo (
+    cd_tiposanguineo character varying(2) NOT NULL,
+    dt_record timestamp without time zone DEFAULT now(),
+    dt_update timestamp without time zone DEFAULT now()
+);
+
+
+ALTER TABLE public.tiposanguineo OWNER TO postgres;
+
+--
+-- TOC entry 207 (class 1259 OID 41933)
+-- Name: zils; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.zils (
+    nr_codigo integer NOT NULL,
+    ds_nome character varying(100) NOT NULL,
+    nr_idade integer NOT NULL,
+    vl_total numeric(15,2) NOT NULL
+);
+
+
+ALTER TABLE public.zils OWNER TO postgres;
+
+--
+-- TOC entry 2884 (class 0 OID 41790)
+-- Dependencies: 201
+-- Data for Name: compatibilidadetiposanguineo; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2879 (class 0 OID 41692)
+-- Dependencies: 196
+-- Data for Name: doador; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2880 (class 0 OID 41699)
+-- Dependencies: 197
+-- Data for Name: endereco; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2881 (class 0 OID 41706)
+-- Dependencies: 198
+-- Data for Name: estado; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.estado (cd_estado, ds_estado, sg_estado, dt_record, dt_update) VALUES (1, 'Paraná', 'PR', '2018-08-24 22:15:15.718039', '2018-08-24 22:15:15.718039');
+INSERT INTO public.estado (cd_estado, ds_estado, sg_estado, dt_record, dt_update) VALUES (2, 'Santa Catarina', 'SC', '2018-08-24 22:16:47.43728', '2018-08-24 22:16:47.43728');
+INSERT INTO public.estado (cd_estado, ds_estado, sg_estado, dt_record, dt_update) VALUES (6, 'Teste Estado', 'xz', '2018-08-31 22:58:49.857', '2018-08-31 22:58:49.857');
+INSERT INTO public.estado (cd_estado, ds_estado, sg_estado, dt_record, dt_update) VALUES (5, 'alterado codigo 5', 'xr', '2018-08-31 23:02:38.46', '2018-08-31 23:02:38.46');
+INSERT INTO public.estado (cd_estado, ds_estado, sg_estado, dt_record, dt_update) VALUES (8, 'Parana', 'PR', '2018-09-01 01:00:46.52', '2018-09-01 01:00:46.52');
+INSERT INTO public.estado (cd_estado, ds_estado, sg_estado, dt_record, dt_update) VALUES (27, 'novo 27 alterado 2', '74', '0001-01-01 00:00:00', '0001-01-01 00:00:00');
+INSERT INTO public.estado (cd_estado, ds_estado, sg_estado, dt_record, dt_update) VALUES (26, 'novo ', '58', '0001-01-01 00:00:00', '0001-01-01 00:00:00');
+INSERT INTO public.estado (cd_estado, ds_estado, sg_estado, dt_record, dt_update) VALUES (33, 'teste', '15', '0001-01-01 00:00:00', '0001-01-01 00:00:00');
+INSERT INTO public.estado (cd_estado, ds_estado, sg_estado, dt_record, dt_update) VALUES (58, 'teste aula', 'op', '0001-01-01 00:00:00', '0001-01-01 00:00:00');
+INSERT INTO public.estado (cd_estado, ds_estado, sg_estado, dt_record, dt_update) VALUES (95, 'string', 'lo', '2018-10-31 22:38:36.252', '2018-10-31 22:38:36.252');
+
+
+--
+-- TOC entry 2885 (class 0 OID 41908)
+-- Dependencies: 202
+-- Data for Name: felipe; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2887 (class 0 OID 41918)
+-- Dependencies: 204
+-- Data for Name: jose; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2889 (class 0 OID 41928)
+-- Dependencies: 206
+-- Data for Name: luana; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2888 (class 0 OID 41923)
+-- Dependencies: 205
+-- Data for Name: matheus; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2882 (class 0 OID 41713)
+-- Dependencies: 199
+-- Data for Name: municipio; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.municipio (cd_municipio, ds_municipio, qt_domicilios, qt_populacao, vl_pib, cd_estado, dt_record, dt_update) VALUES (1, 'Toledo', 50000, 180000, 25000.00, 8, '2018-08-31 22:02:42.790581', '2018-08-31 22:02:42.790581');
+INSERT INTO public.municipio (cd_municipio, ds_municipio, qt_domicilios, qt_populacao, vl_pib, cd_estado, dt_record, dt_update) VALUES (2, 'Teste', 0, 0, 0.00, 95, '2018-10-31 20:31:42.484811', '2018-10-31 20:31:42.484811');
+INSERT INTO public.municipio (cd_municipio, ds_municipio, qt_domicilios, qt_populacao, vl_pib, cd_estado, dt_record, dt_update) VALUES (3, 'testes5', 0, 0, 0.00, 1, '2018-10-31 20:50:31.440451', '2018-10-31 20:50:31.440451');
+INSERT INTO public.municipio (cd_municipio, ds_municipio, qt_domicilios, qt_populacao, vl_pib, cd_estado, dt_record, dt_update) VALUES (5, 'teste front', 6, 6, 6.00, 1, '2018-10-31 21:11:26.099539', '2018-10-31 21:11:26.099539');
+
+
+--
+-- TOC entry 2886 (class 0 OID 41913)
+-- Dependencies: 203
+-- Data for Name: norton; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2891 (class 0 OID 41938)
+-- Dependencies: 208
+-- Data for Name: pedro; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2883 (class 0 OID 41749)
+-- Dependencies: 200
+-- Data for Name: tiposanguineo; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2890 (class 0 OID 41933)
+-- Dependencies: 207
+-- Data for Name: zils; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2739 (class 2606 OID 41796)
+-- Name: compatibilidadetiposanguineo pk_compatibilidadetiposanguineo; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.compatibilidadetiposanguineo
+    ADD CONSTRAINT pk_compatibilidadetiposanguineo PRIMARY KEY (cd_compatibilidade, cd_tiposanguineo, cd_tipo);
+
+
+--
+-- TOC entry 2729 (class 2606 OID 41698)
+-- Name: doador pk_doador; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.doador
+    ADD CONSTRAINT pk_doador PRIMARY KEY (cd_doador);
+
+
+--
+-- TOC entry 2731 (class 2606 OID 41705)
+-- Name: endereco pk_endereco; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.endereco
+    ADD CONSTRAINT pk_endereco PRIMARY KEY (cd_endereco);
+
+
+--
+-- TOC entry 2733 (class 2606 OID 41712)
+-- Name: estado pk_estado; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.estado
+    ADD CONSTRAINT pk_estado PRIMARY KEY (cd_estado);
+
+
+--
+-- TOC entry 2741 (class 2606 OID 41912)
+-- Name: felipe pk_felipe; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.felipe
+    ADD CONSTRAINT pk_felipe PRIMARY KEY (nr_codigo);
+
+
+--
+-- TOC entry 2745 (class 2606 OID 41922)
+-- Name: jose pk_jose; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.jose
+    ADD CONSTRAINT pk_jose PRIMARY KEY (nr_codigo);
+
+
+--
+-- TOC entry 2749 (class 2606 OID 41932)
+-- Name: luana pk_luana; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.luana
+    ADD CONSTRAINT pk_luana PRIMARY KEY (nr_codigo);
+
+
+--
+-- TOC entry 2747 (class 2606 OID 41927)
+-- Name: matheus pk_matheus; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.matheus
+    ADD CONSTRAINT pk_matheus PRIMARY KEY (nr_codigo);
+
+
+--
+-- TOC entry 2735 (class 2606 OID 41719)
+-- Name: municipio pk_municipio; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.municipio
+    ADD CONSTRAINT pk_municipio PRIMARY KEY (cd_municipio);
+
+
+--
+-- TOC entry 2743 (class 2606 OID 41917)
+-- Name: norton pk_norton; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.norton
+    ADD CONSTRAINT pk_norton PRIMARY KEY (nr_codigo);
+
+
+--
+-- TOC entry 2753 (class 2606 OID 41942)
+-- Name: pedro pk_pedro; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.pedro
+    ADD CONSTRAINT pk_pedro PRIMARY KEY (nr_codigo);
+
+
+--
+-- TOC entry 2737 (class 2606 OID 41755)
+-- Name: tiposanguineo pk_tiposanguineo; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tiposanguineo
+    ADD CONSTRAINT pk_tiposanguineo PRIMARY KEY (cd_tiposanguineo);
+
+
+--
+-- TOC entry 2751 (class 2606 OID 41937)
+-- Name: zils pk_zils; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.zils
+    ADD CONSTRAINT pk_zils PRIMARY KEY (nr_codigo);
+
+
+--
+-- TOC entry 2757 (class 2606 OID 41797)
+-- Name: compatibilidadetiposanguineo compatibilidadetiposanguineo_tiposanguineo_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.compatibilidadetiposanguineo
+    ADD CONSTRAINT compatibilidadetiposanguineo_tiposanguineo_fk FOREIGN KEY (cd_tiposanguineo) REFERENCES public.tiposanguineo(cd_tiposanguineo) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- TOC entry 2754 (class 2606 OID 41730)
+-- Name: doador doador_endereco_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.doador
+    ADD CONSTRAINT doador_endereco_fk FOREIGN KEY (cd_endereco) REFERENCES public.endereco(cd_endereco) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- TOC entry 2755 (class 2606 OID 41725)
+-- Name: endereco endereco_municipio_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.endereco
+    ADD CONSTRAINT endereco_municipio_fk FOREIGN KEY (cd_municipio) REFERENCES public.municipio(cd_municipio) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+--
+-- TOC entry 2756 (class 2606 OID 41720)
+-- Name: municipio municipio_estado_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.municipio
+    ADD CONSTRAINT municipio_estado_fk FOREIGN KEY (cd_estado) REFERENCES public.estado(cd_estado) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+
+-- Completed on 2018-11-23 18:46:34
+
+--
+-- PostgreSQL database dump complete
+--
+

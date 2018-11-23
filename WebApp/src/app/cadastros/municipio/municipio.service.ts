@@ -22,5 +22,20 @@ export class MunicipioService extends BaseService {
       .catch((error: any) => Observable.throw(error.error));
   }
 
+  atualizar(municipio: any): Observable<any> {
+    return this.http.put(this.UrlService + "Municipio/" + this.AtualizarUrl, municipio)
+      .catch((error: any) => Observable.throw(error.error));
+  }
+
+  consultarPorId(id: string): Observable<any> {
+    return this.http.get(this.UrlService + "Municipio/" + this.BuscarId + id)
+      .catch((error: any) => Observable.throw(error.error));
+  }
+
+  deletar(id: String): Observable<any> {
+    return this.http.delete(this.UrlService + "Municipio/" + this.RemoverUrl + id)
+      .catch((error: any) => Observable.throw(error.error));
+  }
+
 
 }

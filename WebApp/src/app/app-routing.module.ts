@@ -11,6 +11,7 @@ const appRoutes: Routes = [
   { path: 'estado/novo', component: EstadoNovoComponent},
   { path: 'estado/editar/:id',  component: EstadoNovoComponent },
   { path: 'municipo', component: MunicipioComponent },
+  { path: 'municipo/editar/:id', component: MunicipioComponent },
   { path: 'municipio/list', component: MunicipioListComponent},
  // { path: 'heroes',        component: HeroListComponent },
   { path: '',   redirectTo: '/BancoSangue', pathMatch: 'full' },

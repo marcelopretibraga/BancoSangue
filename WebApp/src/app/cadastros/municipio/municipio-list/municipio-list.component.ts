@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MunicipioService } from '../../municipio/municipio.service';
 import { Municipio } from '../models/municipio';
-import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
+import { MatTableDataSource, MatPaginator, MatSort, MatDialog } from '@angular/material';
+import { Router } from '@angular/router';
+import { DialogComponent } from '../../../shared/dialog/dialog.component';
 
 @Component({
   selector: 'app-municipio-list',
@@ -12,9 +14,11 @@ export class MunicipioListComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginacao: MatPaginator;
   @ViewChild(MatSort) ordenacao: MatSort;
-  constructor(private municipioService : MunicipioService ) { }
+  constructor(private municipioService : MunicipioService, 
+    private dialog: MatDialog, 
+    public router: Router ) { }
   //Propriedade responsável por exibir os campos no HTML
-  public displayedColumns: any = ['codigo', 'descricao', 'pib', 'populacao', 'domicilios']; 
+  public displayedColumns: any = ['actionsColumn','codigo', 'descricao', 'pib', 'populacao', 'domicilios']; 
   public fonteDados: any;
   public palavraChave: string;
 
@@ -58,6 +62,36 @@ export class MunicipioListComponent implements OnInit {
       data.pib.toString().indexOf(filter) != -1 || 
       data.populacao.toString().indexOf(filter) != -1;
     this.fonteDados.filter = dadoFiltro;
+  }
+
+  excluirConfirmacao(codigo : String) {   
+    
+    let dialogRef = this.dialog.open(DialogComponent, {      
+      panelClass: 'custom-dialog',      
+      data: 'Confirmar exclusão do registro ?',
+      disableClose: true
+    });
+
+    dialogRef.afterClosed().subscribe(isConfirm => {
+        if(isConfirm)
+          this.deletar(codigo);    
+    }); 
+  }
+
+  deletar(codigo : String) {    
+    console.log('mpb deletar código ------> '+codigo)
+    var self = this;
+    this.municipioService.deletar(codigo)            
+      .subscribe(data => {    
+        if (data != null)
+        {
+          self.listarTodos();
+        }   
+      });
+  }
+
+  editar(id : String) {    
+    this.router.navigate(['../municipio/editar', id]);
   }
 
 }
