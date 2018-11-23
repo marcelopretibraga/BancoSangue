@@ -1,0 +1,58 @@
+<div class="col s12 m3 tar">
+  <a [routerLink]="['../novo']">
+    <mat-icon svgIcon="form-plus" matTooltip="Novo"></mat-icon>
+  </a>
+</div>
+
+<div class="row heading">
+  <div class="col s12">
+    <h2 class="title">Lista de Pedros</h2>
+    <div class="heading__tools">
+      <div class="search search--right">
+        <mat-form-field>
+          <mat-icon svgIcon="slidenav-search"></mat-icon>
+          <input matInput name="pesquisar" (keyup)="applyFilter($event.target.value)" placeholder="Pesquisar">
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col s12">
+    <mat-table #table [dataSource]="dataSource" matSort class="table-striped">
+
+      <ng-container matColumnDef="actionsColumn">
+        <mat-header-cell *matHeaderCellDef>Ações</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <mat-icon class="link_action" svgIcon="form-trash" matTooltip="Excluir" (click)=excluirConfirmacao(element.codigo)></mat-icon>
+          <mat-icon class="link_action" svgIcon="form-edit" matTooltip="Editar" (click)=editar(element.codigo)></mat-icon>
+        </mat-cell>
+      </ng-container>      
+
+      <ng-container matColumnDef="codigo">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Codigo </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.codigo}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="nome">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Nome </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.nome}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="idade">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Idade </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.idade}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="total">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Total </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.total}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <mat-paginator #paginator name="paginator" [pageSize]="10" [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
+  </div>
+</div>

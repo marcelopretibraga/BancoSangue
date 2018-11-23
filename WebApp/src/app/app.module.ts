@@ -11,7 +11,7 @@ import { EstadoComponent } from './cadastros/estado/estado/estado.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { EstadoService } from './cadastros/estado/estado.service';
-import { DialogComponent } from './shared/dialog/dialog.component'
+import { DialogComponent } from './shared/dialog/dialog.component';
 
 import {
   MatAutocompleteModule,
@@ -51,6 +51,9 @@ import { EstadoNovoComponent } from './cadastros/estado/estado-novo/estado-novo.
 import { MunicipioComponent } from './cadastros/municipio/municipio/municipio.component';
 import { MunicipioService } from './cadastros/municipio/municipio.service';
 import { MunicipioListComponent } from './cadastros/municipio/municipio-list/municipio-list.component';
+import { PedroComponent } from './cadastros/pedro/pedro/pedro.component';
+import { PedroService } from './cadastros/pedro/pedro.service';
+import { PedroNovoComponent } from './cadastros/pedro/pedro-novo/pedro-novo.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +63,9 @@ import { MunicipioListComponent } from './cadastros/municipio/municipio-list/mun
     DialogComponent,
     EstadoNovoComponent,
     MunicipioComponent,
-    MunicipioListComponent    
+    MunicipioListComponent,
+    PedroComponent,
+    PedroNovoComponent    
   ],
   imports: [
     BrowserModule,
@@ -121,6 +126,7 @@ import { MunicipioListComponent } from './cadastros/municipio/municipio-list/mun
     HttpClient, 
     EstadoService, 
     MunicipioService,
+    PedroService,
     SpinnerService
   ],
   bootstrap: [AppComponent]
