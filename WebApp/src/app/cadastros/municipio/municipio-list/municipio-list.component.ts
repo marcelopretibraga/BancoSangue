@@ -14,11 +14,11 @@ export class MunicipioListComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginacao: MatPaginator;
   @ViewChild(MatSort) ordenacao: MatSort;
-  constructor(private municipioService : MunicipioService, 
-    private dialog: MatDialog, 
+  constructor(private municipioService : MunicipioService,
+    private dialog: MatDialog,
     public router: Router ) { }
   //Propriedade responsável por exibir os campos no HTML
-  public displayedColumns: any = ['actionsColumn','codigo', 'descricao', 'pib', 'populacao', 'domicilios']; 
+  public displayedColumns: any = ['actionsColumn','codigo', 'descricao', 'pib', 'populacao', 'domicilios'];
   public fonteDados: any;
   public palavraChave: string;
 
@@ -43,7 +43,7 @@ export class MunicipioListComponent implements OnInit {
         }
       }
       this.fonteDados.sort = this.ordenacao;
-      
+
       console.log("dados municipio em teste")
       console.log(retornoBackend);
     });
@@ -57,40 +57,40 @@ export class MunicipioListComponent implements OnInit {
     this.palavraChave = dadoFiltro;
     this.fonteDados.filterPredicate = (data: Municipio, filter: string) =>
       data.descricao.toUpperCase().indexOf(filter) != -1 ||
-      data.codigo.toString().indexOf(filter) != -1 || 
-      data.domicilios.toString().indexOf(filter) != -1 || 
-      data.pib.toString().indexOf(filter) != -1 || 
+      data.codigo.toString().indexOf(filter) != -1 ||
+      data.domicilios.toString().indexOf(filter) != -1 ||
+      data.pib.toString().indexOf(filter) != -1 ||
       data.populacao.toString().indexOf(filter) != -1;
     this.fonteDados.filter = dadoFiltro;
   }
 
-  excluirConfirmacao(codigo : String) {   
-    
-    let dialogRef = this.dialog.open(DialogComponent, {      
-      panelClass: 'custom-dialog',      
+  excluirConfirmacao(codigo : String) {
+
+    let dialogRef = this.dialog.open(DialogComponent, {
+      panelClass: 'custom-dialog',
       data: 'Confirmar exclusão do registro ?',
       disableClose: true
     });
 
     dialogRef.afterClosed().subscribe(isConfirm => {
         if(isConfirm)
-          this.deletar(codigo);    
-    }); 
+          this.deletar(codigo);
+    });
   }
 
-  deletar(codigo : String) {    
+  deletar(codigo : String) {
     console.log('mpb deletar código ------> '+codigo)
     var self = this;
-    this.municipioService.deletar(codigo)            
-      .subscribe(data => {    
+    this.municipioService.deletar(codigo)
+      .subscribe(data => {
         if (data != null)
         {
           self.listarTodos();
-        }   
+        }
       });
   }
 
-  editar(id : String) {    
+  editar(id : String) {
     this.router.navigate(['../municipio/editar', id]);
   }
 

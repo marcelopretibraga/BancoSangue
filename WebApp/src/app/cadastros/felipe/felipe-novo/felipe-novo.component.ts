@@ -1,30 +1,30 @@
 import { Component, OnInit } from '@angular/core';
-import { Estado } from '../estado/models/estado';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SpinnerService } from '../../../shared/services/spinner.service';
-import { EstadoService } from '../estado.service';
+import { FelipeService } from '../felipe.service';
 import { StringValidation } from '../../../util/string-validation';
 import { MatSnackBar } from '@angular/material';
+import { Felipe } from '../models/felipe';
 
 @Component({
-  selector: 'app-estado-novo',
-  templateUrl: './estado-novo.component.html',
-  styleUrls: ['./estado-novo.component.css']
+  selector: 'app-felipe-novo',
+  templateUrl: './felipe-novo.component.html',
+  styleUrls: ['./felipe-novo.component.css']
 })
-export class EstadoNovoComponent implements OnInit {
+export class FelipeNovoComponent implements OnInit {
 
-  private estado: Estado;
+  private felipe: Felipe;
   private edicao: boolean = false;
-  private codigoEstado: any;
+  private codigoFelipe: any;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private spinnerService: SpinnerService,
-    private estadoService: EstadoService,
+    private felipeService: FelipeService,
     private snackBar: MatSnackBar,
     public router: Router,
   ) {
-    this.estado = new Estado();
+    this.felipe = new Felipe();
   }
 
   ngOnInit() {
@@ -34,7 +34,7 @@ export class EstadoNovoComponent implements OnInit {
         console.log('Parametro ------>')
         console.log(params)
         if (!StringValidation.isNullOrEmpty(params.id)) {
-          this.codigoEstado = params.id;
+          this.codigoFelipe = params.id;
           this.carregarPorId();
           this.edicao = true;
         }
@@ -44,9 +44,9 @@ export class EstadoNovoComponent implements OnInit {
 
   salvar() {
     this.spinnerService.display(true);
-    this.estadoService.salvar(this.estado).subscribe(sucesso => {
+    this.felipeService.salvar(this.felipe).subscribe(sucesso => {
       if (sucesso != null) {
-        this.router.navigate(['../estado']);
+        this.router.navigate(['../felipe']);
         //this.snackBar.openFromComponent(NotificacaoComponent, {
        //   data: [TipoNotificacao.sucesso, 'Operação realizada com sucesso!'], duration: 4000,
         //});
@@ -63,9 +63,9 @@ export class EstadoNovoComponent implements OnInit {
 
   atualizar() {
     this.spinnerService.display(true);
-    this.estadoService.atualizar(this.estado).subscribe(sucesso => {
+    this.felipeService.atualizar(this.felipe).subscribe(sucesso => {
       if (sucesso != null) {
-        this.router.navigate(['../estado']);
+        this.router.navigate(['../felipe']);
         //this.snackBar.openFromComponent(NotificacaoComponent, {
         //  data: [TipoNotificacao.sucesso, 'Atualizado com sucesso!'],  duration: 4000,
         //});
@@ -83,14 +83,14 @@ export class EstadoNovoComponent implements OnInit {
   carregarPorId() {
     var self = this;
     this.spinnerService.display(true);
-    this.estadoService.consultarPorId(this.codigoEstado)
+    this.felipeService.consultarPorId(this.codigoFelipe)
       .subscribe(data => {
         if (data != null) {
-          self.estado = new Estado();
-          self.estado.codigo = data.codigo;
-          self.estado.descricao = data.descricao;
-          self.estado.sigla = data.sigla;
-          //self.estado.ativo = data.ativo;
+          self.felipe = new Felipe();
+          self.felipe.codigo = data.codigo;
+          self.felipe.nome = data.nome;
+          self.felipe.idade = data.idade;
+          self.felipe.total = data.total;
         }
         self.spinnerService.display(false);
       });
