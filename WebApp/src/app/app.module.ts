@@ -51,6 +51,9 @@ import { EstadoNovoComponent } from './cadastros/estado/estado-novo/estado-novo.
 import { MunicipioComponent } from './cadastros/municipio/municipio/municipio.component';
 import { MunicipioService } from './cadastros/municipio/municipio.service';
 import { MunicipioListComponent } from './cadastros/municipio/municipio-list/municipio-list.component';
+import { MatheusComponent } from './cadastros/matheus/matheus/matheus.component';
+import { MatheusListComponent } from './cadastros/matheus/matheus-list/matheus-list.component';
+import { MatheusService } from './cadastros/matheus/matheus.service';
 
 @NgModule({
   declarations: [
@@ -60,7 +63,9 @@ import { MunicipioListComponent } from './cadastros/municipio/municipio-list/mun
     DialogComponent,
     EstadoNovoComponent,
     MunicipioComponent,
-    MunicipioListComponent    
+    MunicipioListComponent,
+    MatheusComponent,
+    MatheusListComponent    
   ],
   imports: [
     BrowserModule,
@@ -121,7 +126,8 @@ import { MunicipioListComponent } from './cadastros/municipio/municipio-list/mun
     HttpClient, 
     EstadoService, 
     MunicipioService,
-    SpinnerService
+    SpinnerService,
+    MatheusService
   ],
   bootstrap: [AppComponent]
 })
