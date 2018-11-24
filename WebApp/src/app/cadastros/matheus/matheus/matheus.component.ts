@@ -75,10 +75,14 @@ export class MatheusComponent implements OnInit {
           self.matheus.codigo = data.codigo;
           self.matheus.nome = data.nome;
           self.matheus.idade = data.idade;
-          self.matheus.valortotal = data.valortotal;
+          self.matheus.total = data.total;
         }
         self.spinnerService.display(false);
       });
+  }
+
+  voltar() {
+    this.router.navigate(['../matheus/list']);
   }
 
 }

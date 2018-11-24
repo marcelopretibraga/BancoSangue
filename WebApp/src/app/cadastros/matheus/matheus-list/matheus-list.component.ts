@@ -14,7 +14,7 @@ import { DialogComponent } from '../../../shared/dialog/dialog.component';
 })
 export class MatheusListComponent implements OnInit {
 
-  public displayedColumns = ['actionsColumn','codigo', 'nome', 'idade', 'valortotal'];
+  public displayedColumns = ['actionsColumn','codigo', 'nome', 'idade', 'total'];
   private dataSource: any;
   public palavraChave: string;
 
@@ -45,7 +45,7 @@ export class MatheusListComponent implements OnInit {
               case 'codigo': return data.codigo;
               case 'nome': return data.nome;
               case 'idade': return data.idade;
-              case 'valortotal': return data.valortotal
+              case 'total': return data.total
               default: return '';
             }
           }
@@ -74,7 +74,7 @@ export class MatheusListComponent implements OnInit {
         data.nome.indexOf(filter) != -1 ||
         data.idade.toString().indexOf(filter) != -1 || 
         data.codigo.toString().indexOf(filter) != -1 ||
-        data.valortotal.toString().indexOf(filter) != -1;
+        data.total.toString().indexOf(filter) != -1;
       this.dataSource.filter = filterValue;
     }
 
@@ -87,7 +87,7 @@ export class MatheusListComponent implements OnInit {
     return matheuss;
   }
 
-  excluirConfirmacao(codigo : String) {   
+  excluirConfirmacao(codigo : string) {   
     
     let dialogRef = this.dialog.open(DialogComponent, {      
       panelClass: 'custom-dialog',      
@@ -101,7 +101,7 @@ export class MatheusListComponent implements OnInit {
     }); 
   }
 
-  deletar(codigo : String) {    
+  deletar(codigo : string) {    
     console.log('mpb deletar código ------> '+codigo)
     var self = this;
     this.spinnerService.display(true); 
