@@ -1,0 +1,37 @@
+<h2>Alteração de zils</h2>
+<form>
+  <div class="row">
+    <div class="col s12 m12 l4">
+      <!-- Usar um Input com o Componete do Material <mat-form-field> -->
+      <mat-form-field>
+        <input matInput name="codigo" required placeholder="Código" [(ngModel)]="zils.codigo" >
+      </mat-form-field>
+    </div>
+    <div class="col s12 m12 l8">
+      <!-- Usar um Input com o Componete do Material <mat-form-field> -->
+      <mat-form-field>
+        <input matInput name="nome" required [(ngModel)]="zils.nome" placeholder="nome">
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <!--Domicilios-->
+    <div class="col s12 m4 l4">
+      <mat-form-field>
+        <input matInput name="idade" [(ngModel)]="zils.idade" placeholder="idade">
+      </mat-form-field>
+    </div>
+    <!--População-->
+    <div class="col s12 m4 l4">
+      <mat-form-field>
+        <input matInput name="total" [(ngModel)]="zils.total" placeholder="total">
+      </mat-form-field>
+    </div>
+
+  </div>
+  
+
+  <button mat-raised-button (click)="salvar()">Salvar</button>
+  <input type="submit">
+
+</form>

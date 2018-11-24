@@ -51,6 +51,11 @@ import { EstadoNovoComponent } from './cadastros/estado/estado-novo/estado-novo.
 import { MunicipioComponent } from './cadastros/municipio/municipio/municipio.component';
 import { MunicipioService } from './cadastros/municipio/municipio.service';
 import { MunicipioListComponent } from './cadastros/municipio/municipio-list/municipio-list.component';
+import { GetallComponent } from './cadastros/Zils/getall/getall.component';
+import { AdicionarComponent } from './cadastros/Zils/adicionar/adicionar.component';
+import { RemoverComponent } from './cadastros/Zils/remover/remover.component';
+import { AlterarComponent } from './cadastros/Zils/alterar/alterar.component';
+import { ZilsService } from './cadastros/Zils/Zils.service';
 
 @NgModule({
   declarations: [
@@ -60,7 +65,11 @@ import { MunicipioListComponent } from './cadastros/municipio/municipio-list/mun
     DialogComponent,
     EstadoNovoComponent,
     MunicipioComponent,
-    MunicipioListComponent    
+    MunicipioListComponent,
+    GetallComponent,
+    AdicionarComponent,
+    RemoverComponent,
+    AlterarComponent  
   ],
   imports: [
     BrowserModule,
@@ -121,6 +130,7 @@ import { MunicipioListComponent } from './cadastros/municipio/municipio-list/mun
     HttpClient, 
     EstadoService, 
     MunicipioService,
+    ZilsService,
     SpinnerService
   ],
   bootstrap: [AppComponent]
