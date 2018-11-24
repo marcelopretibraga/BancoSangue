@@ -51,6 +51,9 @@ import { EstadoNovoComponent } from './cadastros/estado/estado-novo/estado-novo.
 import { MunicipioComponent } from './cadastros/municipio/municipio/municipio.component';
 import { MunicipioService } from './cadastros/municipio/municipio.service';
 import { MunicipioListComponent } from './cadastros/municipio/municipio-list/municipio-list.component';
+import { LuanaComponent } from './cadastros//luana/luana/luana.component';
+import { LuanaListComponent } from './cadastros/luana/luana-list/luana-list.component';
+import { LuanaService } from './cadastros/luana/luana.service';
 
 @NgModule({
   declarations: [
@@ -60,7 +63,9 @@ import { MunicipioListComponent } from './cadastros/municipio/municipio-list/mun
     DialogComponent,
     EstadoNovoComponent,
     MunicipioComponent,
-    MunicipioListComponent    
+    MunicipioListComponent,
+    LuanaComponent,
+    LuanaListComponent    
   ],
   imports: [
     BrowserModule,
@@ -121,6 +126,7 @@ import { MunicipioListComponent } from './cadastros/municipio/municipio-list/mun
     HttpClient, 
     EstadoService, 
     MunicipioService,
+    LuanaService,
     SpinnerService
   ],
   bootstrap: [AppComponent]

@@ -1,0 +1,29 @@
+<h2>Cadastro para Prova</h2>
+<form>
+  <div class="row">
+    <div class="col s12 m12 l4">
+      <mat-form-field>
+        <input matInput name="codigo" required [(ngModel)]="luana.codigo" placeholder="codigo">
+      </mat-form-field>
+    </div>
+    <div class="col s12 m12 l8">
+        <mat-form-field>
+          <input matInput name="nome" required [(ngModel)]="luana.nome" placeholder="Nome">
+        </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s12 m4 l4">
+        <mat-form-field>
+          <input matInput name="idade" [(ngModel)]="luana.idade" placeholder="idade">
+        </mat-form-field>
+    </div>
+    <div class="col s12 m4 l4">
+        <mat-form-field>
+          <input matInput name="total" [(ngModel)]="luana.total" placeholder="total">
+        </mat-form-field>
+    </div>
+  </div>
+  <button mat-raised-button (click)="salvar()">Salvar</button>    
+  <input type="submit">
+</form>
