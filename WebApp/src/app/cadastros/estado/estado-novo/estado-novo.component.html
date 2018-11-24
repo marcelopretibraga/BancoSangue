@@ -5,15 +5,15 @@
       <!--Codigo-->
       <div class="col s12 m12 l2">
         <mat-form-field>
-          <input matInput name="codigo" required maxlength="100"  [(ngModel)]="estado.codigo" placeholder="Código"> 
+          <input matInput name="codigo" required maxlength="100"  [(ngModel)]="estado.codigo" placeholder="Código">
         </mat-form-field>
-      </div> 
+      </div>
       <!--Descricao-->
       <div class="col s12 m12 l10">
         <mat-form-field>
-          <input matInput name="descricao" required maxlength="100"  [(ngModel)]="estado.descricao" placeholder="Descrição"> 
+          <input matInput name="descricao" required maxlength="100"  [(ngModel)]="estado.descricao" placeholder="Descrição">
         </mat-form-field>
-      </div> 
+      </div>
       <!--Sigla-->
       <div class="col s12 m12 l6">
         <mat-form-field>
@@ -25,14 +25,14 @@
         <mat-checkbox [(ngModel)]="estado.ativo" name="ativo" color="ihara">
         </mat-checkbox>
         <label> Ativo </label>
-      </div> 
-    </div>    
+      </div>
+    </div>
   </form>
   <div class="row footer-btn">
-    <div class="button-row col s12"> 
-        <button mat-raised-button (click)="voltar()" >Voltar</button>    
+    <div class="button-row col s12">
+        <button mat-raised-button (click)="voltar()" >Voltar</button>
         <button *ngIf="!edicao" mat-raised-button color="green" (click)="salvar()">Salvar</button>
         <button *ngIf="edicao" mat-raised-button color="green" (click)="atualizar()">Atualizar</button>
-    </div> 
+    </div>
   </div>
 <!--</div> -->

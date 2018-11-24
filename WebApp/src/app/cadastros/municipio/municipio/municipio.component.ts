@@ -14,10 +14,10 @@ export class MunicipioComponent implements OnInit {
   private municipio: Municipio;
   public estados: Array<Estado>;
 
-  constructor(private estadoService: EstadoService, 
+  constructor(private estadoService: EstadoService,
               private municipioService: MunicipioService
   ) { }
-  
+
   ngOnInit() {
     this.municipio = new Municipio();
     this.listarEstados();

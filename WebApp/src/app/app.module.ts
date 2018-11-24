@@ -1,3 +1,4 @@
+import { NortonService } from './cadastros/norton/norton.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -51,6 +52,8 @@ import { EstadoNovoComponent } from './cadastros/estado/estado-novo/estado-novo.
 import { MunicipioComponent } from './cadastros/municipio/municipio/municipio.component';
 import { MunicipioService } from './cadastros/municipio/municipio.service';
 import { MunicipioListComponent } from './cadastros/municipio/municipio-list/municipio-list.component';
+import { NortonComponent } from './cadastros/norton/norton/norton.component';
+import { NortonListComponent } from './cadastros/norton/norton-list/norton-list.component';
 
 @NgModule({
   declarations: [
@@ -60,14 +63,16 @@ import { MunicipioListComponent } from './cadastros/municipio/municipio-list/mun
     DialogComponent,
     EstadoNovoComponent,
     MunicipioComponent,
-    MunicipioListComponent    
+    MunicipioListComponent,
+    NortonComponent,
+    NortonListComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ToastModule.forRoot(),
-    AppRoutingModule, 
-    HttpClientModule, 
+    AppRoutingModule,
+    HttpClientModule,
 
     MatAutocompleteModule,
     MatButtonModule,
@@ -113,14 +118,15 @@ import { MunicipioListComponent } from './cadastros/municipio/municipio-list/mun
     MatSidenavModule
   ],
   entryComponents: [
-   // MessageComponent,    
+   // MessageComponent,
    // NotificacaoComponent,
     DialogComponent
   ],
   providers: [
-    HttpClient, 
-    EstadoService, 
+    HttpClient,
+    EstadoService,
     MunicipioService,
+    NortonService,
     SpinnerService
   ],
   bootstrap: [AppComponent]

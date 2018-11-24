@@ -1,3 +1,5 @@
+import { NortonComponent } from './cadastros/norton/norton/norton.component';
+import { NortonListComponent } from './cadastros/norton/norton-list/norton-list.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { EstadoComponent } from './cadastros/estado/estado/estado.component';
@@ -13,6 +15,9 @@ const appRoutes: Routes = [
   { path: 'municipo', component: MunicipioComponent },
   { path: 'municipo/editar/:id', component: MunicipioComponent },
   { path: 'municipio/list', component: MunicipioListComponent},
+  { path: 'norton', component: NortonComponent},
+  { path: 'norton/editar/:id', component: NortonComponent},
+  { path: 'norton/list', component: NortonListComponent},
  // { path: 'heroes',        component: HeroListComponent },
   { path: '',   redirectTo: '/BancoSangue', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }

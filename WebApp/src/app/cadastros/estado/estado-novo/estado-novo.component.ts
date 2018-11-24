@@ -19,11 +19,11 @@ export class EstadoNovoComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private spinnerService: SpinnerService, 
+    private spinnerService: SpinnerService,
     private estadoService: EstadoService,
     private snackBar: MatSnackBar,
     public router: Router,
-  ) { 
+  ) {
     this.estado = new Estado();
   }
 
