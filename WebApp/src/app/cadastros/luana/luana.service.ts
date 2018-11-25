@@ -13,7 +13,6 @@ export class LuanaService extends BaseService {
   }
 
   salvar(luana: Luana) : Observable<any> {
-    //http://localhost:60615/api/Municipio/Save/
     return this.http.post(this.UrlService + "Luana/"+this.SalvarUrl,
        luana).catch((error: any) => Observable.throw(error.error));
   }
