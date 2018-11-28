@@ -51,9 +51,9 @@ import { EstadoNovoComponent } from './cadastros/estado/estado-novo/estado-novo.
 import { MunicipioComponent } from './cadastros/municipio/municipio/municipio.component';
 import { MunicipioService } from './cadastros/municipio/municipio.service';
 import { MunicipioListComponent } from './cadastros/municipio/municipio-list/municipio-list.component';
-import { FelipeComponent } from './cadastros/felipe/felipe/felipe.component';
 import { FelipeNovoComponent } from './cadastros/felipe/felipe-novo/felipe-novo.component';
 import { FelipeListComponent } from './cadastros/felipe/felipe-list/felipe-list.component';
+import { FelipeService } from './cadastros/felipe/felipe.service';
 
 @NgModule({
   declarations: [
@@ -64,7 +64,6 @@ import { FelipeListComponent } from './cadastros/felipe/felipe-list/felipe-list.
     EstadoNovoComponent,
     MunicipioComponent,
     MunicipioListComponent,
-    FelipeComponent,
     FelipeNovoComponent,
     FelipeListComponent    
   ],
@@ -127,7 +126,8 @@ import { FelipeListComponent } from './cadastros/felipe/felipe-list/felipe-list.
     HttpClient, 
     EstadoService, 
     MunicipioService,
-    SpinnerService
+    SpinnerService, 
+    FelipeService
   ],
   bootstrap: [AppComponent]
 })
