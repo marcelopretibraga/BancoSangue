@@ -55,7 +55,7 @@ export class AlterarComponent implements OnInit {
         console.log('mpb retorno do response --->')
         console.log(response);
         if (response != null) {
-          this.carregaGridUpperCase(response);
+          //this.carregaGridUpperCase(response);
           this.dataSource = new MatTableDataSource<Zils>(response);
           this.dataSource.paginator = this.paginator;
           this.dataSource.sortingDataAccessor = (data: Zils, property: string) => {
