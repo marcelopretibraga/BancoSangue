@@ -68,10 +68,10 @@ export class AlterarComponent implements OnInit {
             }
           }
           this.dataSource.sort = this.sort;
-          if (self.palavraChave)
+          /*if (self.palavraChave)
             if (!StringValidation.isNullOrEmpty(self.palavraChave)) {
               self.applyFilter(self.palavraChave);
-            }
+            }*/
         }
         this.spinnerService.display(false);
       },
@@ -98,7 +98,7 @@ export class AlterarComponent implements OnInit {
   carregarPorId() {
     var self = this;
     this.spinnerService.display(true);
-    this.zilsService.consultarPorId(this.codigoEstado)
+    this.zilsService.consultarPorId(this.codigoZils)
       .subscribe(data => {
         if (data != null) {
           self.zils = new Zils();
