@@ -9,7 +9,11 @@ CREATE TABLE public.veiculo
 	nr_passageiros integer not null, 
 	nr_portas integer not null, 
     dt_retistro date NOT NULL,
-    CONSTRAINT pk_veiculo PRIMARY KEY (cd_veiculo)
+    CONSTRAINT pk_veiculo PRIMARY KEY (cd_veiculo), 
+	CONSTRAINT fk_veiculo_cor FOREIGN KEY (cd_cor)
+        REFERENCES public.cor (cd_cor) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
 )
 WITH (
     OIDS = FALSE
