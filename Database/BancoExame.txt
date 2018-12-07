@@ -1,0 +1,35 @@
+CREATE TABLE public.veiculo
+(
+    cd_veiculo integer NOT NULL,
+    nr_placa character varying(20) COLLATE pg_catalog."default" NOT NULL,
+    nr_ano integer,
+	nr_modelo integer,
+    cd_cor integer NOT NULL,
+    nr_chassi character varying(20) COLLATE pg_catalog."default" NOT NULL,
+	nr_passageiros integer not null, 
+	nr_portas integer not null, 
+    dt_retistro date NOT NULL,
+    CONSTRAINT pk_veiculo PRIMARY KEY (cd_veiculo)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.veiculo
+    OWNER to postgres;
+	
+
+CREATE TABLE public.cor
+(
+    cd_cor integer NOT NULL,
+    ds_cor character varying(60) COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT pk_cor PRIMARY KEY (cd_cor)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.cor
+    OWNER to postgres;	
