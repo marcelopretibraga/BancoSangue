@@ -40,15 +40,15 @@
         <mat-form-field>
           <mat-select name="estado" placeholder="Estado" [(ngModel)]="municipio.codigoEstado" >
             <!--let == var var item in estados-->
-            <mat-option *ngFor="let item of estados" [value]="item.codigo">
+            <mat-option *ngFor="let item of cores" [value]="item.codigo">
               {{item.descricao}} - {{item.sigla}}
             </mat-option>
           </mat-select>
       </mat-form-field>
     </div>
-  </div>  
+  </div>
 
-  <button mat-raised-button (click)="salvar()">Salvar</button>    
+  <button mat-raised-button (click)="salvar()">Salvar</button>
   <input type="submit">
 
 </form>

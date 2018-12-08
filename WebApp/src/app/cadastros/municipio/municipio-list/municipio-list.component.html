@@ -16,35 +16,35 @@
   <div class="row">
     <div class="col s12 m12 l12">
       <mat-table #table [dataSource]="fonteDados" matSort class="table-striped">
-  
+
         <ng-container matColumnDef="actionsColumn">
           <mat-header-cell *matHeaderCellDef>Ações</mat-header-cell>
           <mat-cell *matCellDef="let element">
             <mat-icon class="link_action" svgIcon="form-trash" matTooltip="Excluir" (click)=excluirConfirmacao(element.codigo)></mat-icon>
             <mat-icon class="link_action" svgIcon="form-edit" matTooltip="Editar" (click)=editar(element.codigo)></mat-icon>
           </mat-cell>
-        </ng-container>  
+        </ng-container>
 
         <ng-container matColumnDef="codigo">
           <mat-header-cell *matHeaderCellDef mat-sort-header> Codigo </mat-header-cell>
           <mat-cell *matCellDef="let element"> {{element.codigo}} </mat-cell>
         </ng-container>
-  
-        <ng-container matColumnDef="descricao">
+
+        <ng-container matColumnDef="placa">
           <mat-header-cell *matHeaderCellDef mat-sort-header> Descrição </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.descricao}} </mat-cell>
+          <mat-cell *matCellDef="let element"> {{element.placa}} </mat-cell>
         </ng-container>
-  
-        <ng-container matColumnDef="domicilios">
+
+        <ng-container matColumnDef="ano">
           <mat-header-cell *matHeaderCellDef mat-sort-header> domicilios </mat-header-cell>
           <mat-cell *matCellDef="let element"> {{element.domicilios}} </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="populacao">
-          <mat-header-cell *matHeaderCellDef mat-sort-header> populacao </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.populacao}} </mat-cell>
+        <ng-container matColumnDef="modelo">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> modelo </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.modelo}} </mat-cell>
         </ng-container>
-  
+
         <ng-container matColumnDef="pib">
           <mat-header-cell *matHeaderCellDef mat-sort-header> pib </mat-header-cell>
           <mat-cell *matCellDef="let element"> {{element.pib}} </mat-cell>

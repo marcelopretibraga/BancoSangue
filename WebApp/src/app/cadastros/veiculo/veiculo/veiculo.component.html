@@ -1,0 +1,70 @@
+<h2>Cadastro de Veiculo</h2>
+<form>
+  <div class="row">
+    <div class="col s12 m12 l4">
+      <!-- Usar um Input com o Componete do Material <mat-form-field> -->
+      <mat-form-field>
+        <input matInput name="codigo" required placeholder="Código" [(ngModel)]="veiculo.codigo">
+      </mat-form-field>
+    </div>
+    <div class="col s12 m12 l8">
+        <!-- Usar um Input com o Componete do Material <mat-form-field> -->
+        <mat-form-field>
+          <input matInput name="placa" required [(ngModel)]="veiculo.placa" placeholder="Placa">
+        </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <!--Domicilios-->
+    <div class="col s12 m4 l4">
+        <mat-form-field>
+          <input matInput name="ano" [(ngModel)]="veiculo.ano" placeholder="Ano">
+        </mat-form-field>
+    </div>
+    <!--População-->
+    <div class="col s12 m4 l4">
+        <mat-form-field>
+          <input matInput name="modelo" [(ngModel)]="veiculo.modelo" placeholder="Modelo">
+        </mat-form-field>
+    </div>
+    <!--Pib-->
+    <div class="col s12 m4 l4">
+        <mat-form-field>
+          <input matInput placeholder="Chassi" name="chassi" required [(ngModel)]="veiculo.chassi">
+        </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+      <div class="col s12 m4 l4">
+          <mat-form-field>
+            <input matInput placeholder="Passageiros" name="passageiros" required [(ngModel)]="veiculo.passageiros">
+          </mat-form-field>
+      </div>
+      <div class="col s12 m4 l4">
+          <mat-form-field>
+            <input matInput placeholder="Portas" name="portas" required [(ngModel)]="veiculo.portas">
+          </mat-form-field>
+      </div>
+      <div class="col s12 m4 l4">
+          <mat-form-field>
+            <input matInput placeholder="Registro" name="registro" required [(ngModel)]="veiculo.registro">
+          </mat-form-field>
+      </div>
+    </div>
+    <!--Cor-->
+    <div class="col s12 m6 l6">
+        <mat-form-field>
+          <mat-select name="cor" placeholder="Cor" [(ngModel)]="veiculo.codigoCor" >
+            <!--let == var var item in estados-->
+            <mat-option *ngFor="let item of cor" [value]="item.codigo">
+              {{item.codigo}} - {{item.descricao}}
+            </mat-option>
+          </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <button mat-raised-button (click)="salvar()">Salvar</button>
+  <input type="submit">
+
+</form>

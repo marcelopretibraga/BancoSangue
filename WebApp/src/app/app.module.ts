@@ -51,6 +51,10 @@ import { EstadoNovoComponent } from './cadastros/estado/estado-novo/estado-novo.
 import { MunicipioComponent } from './cadastros/municipio/municipio/municipio.component';
 import { MunicipioService } from './cadastros/municipio/municipio.service';
 import { MunicipioListComponent } from './cadastros/municipio/municipio-list/municipio-list.component';
+import { CorComponent } from './cadastros/cor/cor.component';
+import { VeiculoComponent } from './cadastros/veiculo/veiculo.component';
+import { VeiculoListComponent } from './cadastros/veiculo/veiculo-list/veiculo-list.component';
+import { VeiculoService } from './cadastros/veiculo/veiculo.service';
 
 @NgModule({
   declarations: [
@@ -60,14 +64,17 @@ import { MunicipioListComponent } from './cadastros/municipio/municipio-list/mun
     DialogComponent,
     EstadoNovoComponent,
     MunicipioComponent,
-    MunicipioListComponent    
+    MunicipioListComponent,
+    CorComponent,
+    VeiculoComponent,
+    VeiculoListComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ToastModule.forRoot(),
-    AppRoutingModule, 
-    HttpClientModule, 
+    AppRoutingModule,
+    HttpClientModule,
 
     MatAutocompleteModule,
     MatButtonModule,
@@ -113,14 +120,15 @@ import { MunicipioListComponent } from './cadastros/municipio/municipio-list/mun
     MatSidenavModule
   ],
   entryComponents: [
-   // MessageComponent,    
+   // MessageComponent,
    // NotificacaoComponent,
     DialogComponent
   ],
   providers: [
-    HttpClient, 
-    EstadoService, 
+    HttpClient,
+    EstadoService,
     MunicipioService,
+    VeiculoService,
     SpinnerService
   ],
   bootstrap: [AppComponent]
