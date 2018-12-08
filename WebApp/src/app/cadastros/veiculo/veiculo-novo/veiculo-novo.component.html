@@ -1,3 +1,61 @@
-<p>
-  veiculo-novo works!
-</p>
+<h2>Cadastro de Estado</h2>
+<form>
+  <div class="row">
+    <!--Codigo-->
+    <div class="col s12 m12 l2">
+      <mat-form-field>
+        <input matInput name="codigo" required maxlength="100" [(ngModel)]="veiculo.codigo" placeholder="Código">
+      </mat-form-field>
+    </div>
+    <!--Descricao-->
+    <div class="col s12 m12 l10">
+      <mat-form-field>
+        <input matInput name="nr_placa" required maxlength="100" [(ngModel)]="veiculo.nr_placa" placeholder="Descrição">
+      </mat-form-field>
+    </div>
+    <div class="col s12 m12 l10">
+      <mat-form-field>
+        <input matInput name="nr_modelo" required maxlength="100" [(ngModel)]="veiculo.nr_modelo" placeholder="nr_modelo">
+      </mat-form-field>
+    </div>
+    <div class="col s12 m12 l10">
+      <mat-form-field>
+        <input matInput name="nr_passageiros" required maxlength="100" [(ngModel)]="veiculo.nr_passageiros" placeholder="nr_passageiros">
+      </mat-form-field>
+    </div>
+    <div class="col s12 m12 l10">
+      <mat-form-field>
+        <input matInput name="dt_retistro" required maxlength="100" [(ngModel)]="veiculo.dt_retistro" placeholder="dt_retistro">
+      </mat-form-field>
+    </div>
+    <div class="col s12 m12 l10">
+      <mat-form-field>
+        <input matInput name="nr_portas" required maxlength="100" [(ngModel)]="veiculo.nr_portas" placeholder="nr_portas">
+      </mat-form-field>
+    </div>
+    <div class="col s12 m12 l10">
+      <mat-form-field>
+        <input matInput name="nr_chassi" required maxlength="100" [(ngModel)]="veiculo.nr_chassi" placeholder="nr_chassi">
+      </mat-form-field>
+    </div>
+    <div class="col s12 m12 l10">
+      <mat-form-field>
+        <input matInput name="cd_cor" required maxlength="100" [(ngModel)]="veiculo.cd_cor" placeholder="cd_cor">
+      </mat-form-field>
+    </div>
+    <div class="col s12 m12 l10">
+      <mat-form-field>
+        <input matInput name="nr_ano" required maxlength="100" [(ngModel)]="veiculo.nr_ano" placeholder="nr_ano">
+      </mat-form-field>
+    </div>
+    <!--Sigla-->
+    <!--Ativo depois-->
+  </div>
+</form>
+<div class="row footer-btn">
+  <div class="button-row col s12">
+    <button mat-raised-button (click)="voltar()">Voltar</button>
+    <button *ngIf="!edicao" mat-raised-button color="green" (click)="salvar()">Salvar</button>
+    <button *ngIf="edicao" mat-raised-button color="green" (click)="atualizar()">Atualizar</button>
+  </div>
+</div>

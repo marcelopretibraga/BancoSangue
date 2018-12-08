@@ -1,3 +1,5 @@
+import { Cor } from "../../cor/models/cor";
+
 export class Veiculo {
     Codigo: number;
     Nr_placa : string
@@ -8,4 +10,5 @@ export class Veiculo {
     Nr_passageiros : number
     Nr_portas : number
     Dt_registro : Date
+    Cor_Veiculo : Cor
 }

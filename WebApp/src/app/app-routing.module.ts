@@ -6,6 +6,9 @@ import { EstadoNovoComponent } from './cadastros/estado/estado-novo/estado-novo.
 import { MunicipioComponent } from './cadastros/municipio/municipio/municipio.component';
 import { MunicipioListComponent } from './cadastros/municipio/municipio-list/municipio-list.component';
 import { VeiculoComponent } from './cadastros/veiculo/veiculo/veiculo.component';
+import { VeiculoListComponent } from './cadastros/veiculo/veiculo-list/veiculo-list.component';
+import { VeiculoNovoComponent } from './cadastros/veiculo/veiculo-novo/veiculo-novo.component';
+
 
 const appRoutes: Routes = [
   { path: 'estado/list', component: EstadoComponent },
@@ -15,8 +18,8 @@ const appRoutes: Routes = [
   { path: 'municipo/editar/:id', component: MunicipioComponent },
   { path: 'municipio/list', component: MunicipioListComponent},
   { path: 'veiculo', component: VeiculoComponent },
-  { path: 'veiculo/editar/:id', component: VeiculoComponent },
-  { path: 'veiculo/list', component: VeiculoComponent},
+  { path: 'veiculo/list', component: VeiculoListComponent },
+  { path: 'veiculo/editar/:id', component: VeiculoNovoComponent },
  // { path: 'heroes',        component: HeroListComponent },
   { path: '',   redirectTo: '/BancoSangue', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }

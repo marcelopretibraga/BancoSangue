@@ -12,7 +12,6 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { EstadoService } from './cadastros/estado/estado.service';
 import { DialogComponent } from './shared/dialog/dialog.component';
-import { VeiculoService } from './cadastros/veiculo/veiculo.service';
 
 import {
   MatAutocompleteModule,
@@ -56,6 +55,8 @@ import { VeiculoComponent } from './cadastros/veiculo/veiculo/veiculo.component'
 import { VeiculoListComponent } from './cadastros/veiculo/veiculo-list/veiculo-list.component';
 import { VeiculoNovoComponent } from './cadastros/veiculo/veiculo-novo/veiculo-novo.component';
 import { VeiculoService } from './cadastros/veiculo/veiculo.service';
+import { CorService } from './cadastros/cor/cor.service';
+import { CorComponent } from './cadastros/cor/cor/cor.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { VeiculoService } from './cadastros/veiculo/veiculo.service';
     MunicipioListComponent,
     VeiculoComponent,
     VeiculoListComponent,
-    VeiculoNovoComponent    
+    VeiculoNovoComponent,
+    CorComponent    
   ],
   imports: [
     BrowserModule,
@@ -130,6 +132,7 @@ import { VeiculoService } from './cadastros/veiculo/veiculo.service';
     EstadoService, 
     MunicipioService,
     VeiculoService,
+    CorService,
     SpinnerService
   ],
   bootstrap: [AppComponent]

@@ -59,8 +59,17 @@
       <mat-form-field>
         <input matInput name="Dt_registro" [(ngModel)]="veiculo.Dt_registro" placeholder="Dt_registro">
       </mat-form-field>
-
     </div>
+  </div>
+  <div class="col s12 m6 l6">
+    <mat-form-field>
+      <mat-select name="cor" placeholder="Cor" [(ngModel)]="veiculo.Cor">
+        <!--let == var var item in estados-->
+        <mat-option *ngFor="let item of estados" [value]="item.codigo">
+          {{item.Codigo}} - {{item.Descicao}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
     <!--Pib-->
   </div>
   <button mat-raised-button (click)="salvar()">Salvar</button>

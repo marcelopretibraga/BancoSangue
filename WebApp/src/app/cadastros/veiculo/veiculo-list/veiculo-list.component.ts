@@ -14,7 +14,7 @@ import { Veiculo } from '../models/veiculo';
 })
 export class VeiculoListComponent implements OnInit {
 
-  public displayedColumns = ['actionsColumn','cd_veiculo', 'nr_placa', 'nr_modelo', 'nr_ano','cd_cor','nr_chassi','nr_passageiros','nr_portas','dtretistro'];
+  public displayedColumns = ['actionsColumn','codigo', 'nr_placa', 'nr_modelo', 'nr_ano','cd_cor','nr_chassi','nr_passageiros','nr_portas','dt_retistro'];
   private dataSource: any;
   public palavraChave: string;
 
@@ -128,8 +128,9 @@ export class VeiculoListComponent implements OnInit {
   }
 
   editar(id : String) {    
-    this.router.navigate(['../estado/editar', id]);
+    this.router.navigate(['../veiculo/editar', id]);
   }
 
 
 }
+

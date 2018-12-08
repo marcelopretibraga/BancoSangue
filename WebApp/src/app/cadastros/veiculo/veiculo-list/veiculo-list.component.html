@@ -1,3 +1,73 @@
-<p>
-  veiculo-list works!
-</p>
+<div class="row heading">
+  <div class="col s12">
+    <h2 class="title">Lista de Veiculos</h2>
+    <div class="heading__tools">
+      <div class="search search--right">
+        <mat-form-field>
+          <mat-icon svgIcon="slidenav-search"></mat-icon>
+          <input matInput name="pesquisar" (keyup)="aplicaFiltro($event.target.value)" placeholder="Pesquisar">
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col s12 m12 l12">
+    <mat-table #table [dataSource]="fonteDados" matSort class="table-striped">
+
+      <ng-container matColumnDef="actionsColumn">
+        <mat-header-cell *matHeaderCellDef>Ações</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <mat-icon class="link_action" svgIcon="form-trash" matTooltip="Excluir" (click)=excluirConfirmacao(element.codigo)></mat-icon>
+          <mat-icon class="link_action" svgIcon="form-edit" matTooltip="Editar" (click)=editar(element.codigo)></mat-icon>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="codigo">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Codigo </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.codigo}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="nr_placa">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> nr_placa </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.nr_placa}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="nr_modelo">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> nr_modelo </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.nr_modelo}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="nr_passageiros">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> nr_passageiros </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.nr_passageiros}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="dt_retistro">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> dt_retistro </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.dt_retistro}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="nr_portas">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> nr_portas </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.nr_portas}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="nr_chassi">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> nr_chassi </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.nr_chassi}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="cd_cor">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> cd_cor </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.cd_cor}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="nr_ano">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> nr_ano </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.nr_ano}} </mat-cell>
+        </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <mat-paginator #paginator name="paginator" [pageSize]="10" [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
+  </div>
+</div>
