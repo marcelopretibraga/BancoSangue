@@ -11,7 +11,8 @@ import { EstadoComponent } from './cadastros/estado/estado/estado.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { EstadoService } from './cadastros/estado/estado.service';
-import { DialogComponent } from './shared/dialog/dialog.component'
+import { DialogComponent } from './shared/dialog/dialog.component';
+import { VeiculoService } from './cadastros/veiculo/veiculo.service';
 
 import {
   MatAutocompleteModule,
@@ -51,6 +52,10 @@ import { EstadoNovoComponent } from './cadastros/estado/estado-novo/estado-novo.
 import { MunicipioComponent } from './cadastros/municipio/municipio/municipio.component';
 import { MunicipioService } from './cadastros/municipio/municipio.service';
 import { MunicipioListComponent } from './cadastros/municipio/municipio-list/municipio-list.component';
+import { VeiculoComponent } from './cadastros/veiculo/veiculo/veiculo.component';
+import { VeiculoListComponent } from './cadastros/veiculo/veiculo-list/veiculo-list.component';
+import { VeiculoNovoComponent } from './cadastros/veiculo/veiculo-novo/veiculo-novo.component';
+import { VeiculoService } from './cadastros/veiculo/veiculo.service';
 
 @NgModule({
   declarations: [
@@ -60,7 +65,10 @@ import { MunicipioListComponent } from './cadastros/municipio/municipio-list/mun
     DialogComponent,
     EstadoNovoComponent,
     MunicipioComponent,
-    MunicipioListComponent    
+    MunicipioListComponent,
+    VeiculoComponent,
+    VeiculoListComponent,
+    VeiculoNovoComponent    
   ],
   imports: [
     BrowserModule,
@@ -121,6 +129,7 @@ import { MunicipioListComponent } from './cadastros/municipio/municipio-list/mun
     HttpClient, 
     EstadoService, 
     MunicipioService,
+    VeiculoService,
     SpinnerService
   ],
   bootstrap: [AppComponent]

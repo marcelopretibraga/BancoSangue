@@ -2,63 +2,64 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BancoSangueAPI.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using BancoSangueAPI.Model;
 
 namespace BancoSangueAPI.Controllers
 {
     [Produces("application/json")]
-    [Route("api/Zils")]
-    public class ZilsController : Controller
+    [Route("api/Veiculo")]
+    public class VeiculoController : Controller
     {
         private readonly BancoSangueContext _context;
 
-        public ZilsController(BancoSangueContext context)
+        public VeiculoController(BancoSangueContext context)
         {
             _context = context;
         }
 
-        // GET: api/Zils
+
+        // GET: api/Cor
         [HttpGet]
         [Route("GetAll")]
-        public IEnumerable<Zils> GetZils()
+        public IEnumerable<Veiculo> GetVeiculo()
         {
-            return _context.Zils;
+            return _context.Veiculo;
         }
 
-        // GET: api/Zils/5
+        // GET: api/Cor/5
         [HttpGet]
         [Route("GetById/{id:int}")]
-        public async Task<IActionResult> GetZils([FromRoute] int id)
+        public async Task<IActionResult> GetVeiculo([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var zils = await _context.Cor.SingleOrDefaultAsync(m => m.Codigo == id);
+            var veiculo = await _context.Veiculo.SingleOrDefaultAsync(m => m.Codigo == id);
 
-            if (zils == null)
+            if (veiculo == null)
             {
                 return NotFound();
             }
 
-            return Ok(zils);
+            return Ok(veiculo);
         }
 
-        // PUT: api/Zils/5
+        // PUT: api/Cor/5
         [HttpPut]
         [Route("Update")]
-        public async Task<IActionResult> PutZils([FromBody] Zils zils)
+        public async Task<IActionResult> PutVeiculo([FromBody] Veiculo veiculo)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            
-            _context.Entry(zils).State = EntityState.Modified;
+
+            _context.Entry(veiculo).State = EntityState.Modified;
 
             try
             {
@@ -69,50 +70,50 @@ namespace BancoSangueAPI.Controllers
                 throw;
             }
 
-            return Ok(zils);
+            return Ok(veiculo);
         }
 
-        // POST: api/Zils
+        // POST: api/Cor
         [HttpPost]
         [Route("Save")]
-        public async Task<IActionResult> PostZils([FromBody] Zils zils)
+        public async Task<IActionResult> PostVeiculo([FromBody] Veiculo veiculo)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _context.Zils.Add(zils);
+            _context.Veiculo.Add(veiculo);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetZils", new { id = zils.Codigo }, zils);
+            return CreatedAtAction("GetCor", new { id = veiculo.Codigo }, veiculo);
         }
 
-        // DELETE: api/Zils/5
+        // DELETE: api/Cor/5
         [HttpDelete]
         [Route("Remove")]
-        public async Task<IActionResult> DeleteZils(int id)
+        public async Task<IActionResult> DeleteVeiculo(int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var zils = await _context.Cor.SingleOrDefaultAsync(m => m.Codigo == id);
-            if (zils == null)
+            var veiculo = await _context.Veiculo.SingleOrDefaultAsync(m => m.Codigo == id);
+            if (veiculo == null)
             {
                 return NotFound();
             }
 
-            _context.Cor.Remove(zils);
+            _context.Veiculo.Remove(veiculo);
             await _context.SaveChangesAsync();
 
-            return Ok(zils);
+            return Ok(veiculo);
         }
 
-        private bool ZilsExists(int id)
+        private bool VeiculoExists(int id)
         {
-            return _context.Cor.Any(e => e.Codigo == id);
+            return _context.Veiculo.Any(e => e.Codigo == id);
         }
     }
 }

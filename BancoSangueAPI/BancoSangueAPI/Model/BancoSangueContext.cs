@@ -28,6 +28,8 @@ namespace BancoSangueAPI.Model
         public DbSet<Zils> Zils { get; set; }
         public DbSet<Matheus> Matheus { get; set; }
         public DbSet<Pedro> Pedro { get; set; }
+        public DbSet<Veiculo> Veiculo { get; set; }
+        public DbSet<Cor> Cor { get; set; }
 
         /// <summary>
         /// Classe Responsável por Relacionar o MAP com a sua Entidade
@@ -46,6 +48,11 @@ namespace BancoSangueAPI.Model
             modelBuilder.ApplyConfiguration(new ZilsMap());
             modelBuilder.ApplyConfiguration(new MatheusMap());
             modelBuilder.ApplyConfiguration(new PedroMap());
+
+            modelBuilder.ApplyConfiguration(new CorMap());
+            modelBuilder.ApplyConfiguration(new VeiculoMap());
+
+
         }
     }
 }

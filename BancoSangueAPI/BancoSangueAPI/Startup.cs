@@ -45,7 +45,7 @@ namespace BancoSangueAPI
             });
 
             #region ......Configuração Repository........
-            services.AddTransient<IMunicipioRepository, MunicipioRepository>();            
+            services.AddTransient<IMunicipioRepository, MunicipioRepository>();        
             #endregion
             
         }
