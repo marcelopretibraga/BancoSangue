@@ -35,19 +35,39 @@
             <mat-cell *matCellDef="let element"> {{element.placa}} </mat-cell>
           </ng-container>
 
-          <ng-container matColumnDef="domicilios">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> domicilios </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.domicilios}} </mat-cell>
+          <ng-container matColumnDef="ano">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Ano </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.ano}} </mat-cell>
           </ng-container>
 
-          <ng-container matColumnDef="populacao">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> populacao </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.populacao}} </mat-cell>
+          <ng-container matColumnDef="modelo">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Modelo </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.modelo}} </mat-cell>
           </ng-container>
 
-          <ng-container matColumnDef="pib">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> pib </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.pib}} </mat-cell>
+          <ng-container matColumnDef="codigoCor">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Codigo da Cor </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.codigoCor}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="chassi">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Chassi </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.chassi}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="passageiros">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Passageiros </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.passageiros}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="portas">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Portas </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.portas}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="registro">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Registro </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.registro}} </mat-cell>
           </ng-container>
 
           <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

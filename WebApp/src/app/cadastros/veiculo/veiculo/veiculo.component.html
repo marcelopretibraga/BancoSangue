@@ -30,7 +30,7 @@
     <!--Pib-->
     <div class="col s12 m4 l4">
         <mat-form-field>
-          <input matInput placeholder="Chassi" name="chassi" required [(ngModel)]="veiculo.chassi">
+          <input matInput placeholder="Chassi" name="veiculo.chassi" required [(ngModel)]="veiculo.chassi">
         </mat-form-field>
     </div>
   </div>
@@ -50,18 +50,17 @@
             <input matInput placeholder="Registro" name="registro" required [(ngModel)]="veiculo.registro">
           </mat-form-field>
       </div>
-    </div>
+  </div>
     <!--Cor-->
-    <div class="col s12 m6 l6">
-        <mat-form-field>
-          <mat-select name="cor" placeholder="Cor" [(ngModel)]="veiculo.codigoCor" >
-            <!--let == var var item in estados-->
-            <mat-option *ngFor="let item of cor" [value]="item.codigo">
-              {{item.codigo}} - {{item.descricao}}
-            </mat-option>
-          </mat-select>
-      </mat-form-field>
-    </div>
+  <div class="col s12 m6 l6">
+      <mat-form-field>
+        <mat-select name="cor" placeholder="Cor" [(ngModel)]="veiculo.codigoCor" >
+          <!--let == var var item in estados-->
+          <mat-option *ngFor="let item of cor" [value]="item.codigo">
+            {{item.codigo}} - {{item.descricao}}
+          </mat-option>
+        </mat-select>
+    </mat-form-field>
   </div>
 
   <button mat-raised-button (click)="salvar()">Salvar</button>

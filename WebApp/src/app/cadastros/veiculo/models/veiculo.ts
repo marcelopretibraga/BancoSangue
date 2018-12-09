@@ -1,3 +1,5 @@
+import { Cor } from "./cor";
+
 export class Veiculo {
     codigo: number;
     placa: string;
@@ -6,6 +8,7 @@ export class Veiculo {
     codigoCor: number;
     chassi: string;
     passageiros: number;
-    portas : number;
-    registro : Date;
+    portas: number;
+    registro: Date;
+    cor: Cor;
 }

@@ -2,27 +2,26 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BaseService } from '../../base.service';
 import { Veiculo } from './models/veiculo';
+import { Observable } from 'rxjs/Observable';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class VeiculoService extends BaseService {
 
-  constructor(private http : HttpClient) {
+  constructor(private http: HttpClient) {
     super();
    }
 
-   salvar(veiculo: Veiculo) : Observable<any> {
-    return this.http.post(this.UrlService + "Veiculo/"+this.SalvarUrl,
+   salvar(veiculo: Veiculo): Observable<any> {
+    return this.http.post(this.UrlService + "Veiculo/" +this.SalvarUrl,
        veiculo).catch((error: any) => Observable.throw(error.error));
   }
 
-  listarTodos(){
+  listarTodos() {
     return this.http.get(this.UrlService + "Veiculo/" + this.BuscarTodos)
       .catch((error: any) => Observable.throw(error.error));
   }
 
-  atualizar(veiculo: any): Observa ble<any> {
+  atualizar(veiculo: any): Observable<any> {
     return this.http.put(this.UrlService + "Veiculo/" + this.AtualizarUrl, veiculo)
       .catch((error: any) => Observable.throw(error.error));
   }
